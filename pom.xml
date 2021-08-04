@@ -22,9 +22,9 @@
         <spring.version>4.2.4.RELEASE</spring.version>
 
         <!-- JAVA环境 -->
-        <java.version>1.7</java.version>
-        <source.version>1.7</source.version>
-        <target.version>1.7</target.version>
+        <java.version>1.8</java.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
         <spring.amqp.version>1.4.5.RELEASE</spring.amqp.version>
         <jsp.version>2.0</jsp.version>
         <servlet.version>2.5</servlet.version>
@@ -45,6 +45,8 @@
 
     <modules>
         <module>bom</module>
+        <module>vpaas-common</module>
+        <module>vpaas-lc</module>
     </modules>
 
     <dependencies>
@@ -71,6 +73,12 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.12.Final</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.github.knightliao.vpaas.bom</groupId>
@@ -180,7 +188,6 @@
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
-
 
 
         </dependencies>
@@ -313,7 +320,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <additionalparam>${javadoc.opts}</additionalparam>
+                    <!-- jdk1.8要加上，1.7要去掉，否则会报错 -->
+                    <additionalJOptions>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                    </additionalJOptions>
                 </configuration>
                 <executions>
                     <execution>
