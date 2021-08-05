@@ -15,6 +15,7 @@
 
     <modules>
         <module>vpaas-lc-server-connect</module>
+        <module>vpaas-lc-server-server</module>
     </modules>
 
 </project>
