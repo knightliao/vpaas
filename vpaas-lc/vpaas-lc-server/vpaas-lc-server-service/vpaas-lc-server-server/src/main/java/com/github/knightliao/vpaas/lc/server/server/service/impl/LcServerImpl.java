@@ -152,15 +152,15 @@ public class LcServerImpl extends LcService implements IMyLcServer {
         newServerBootstrap();
 
         // bind
-        bindSocket();
+        ChannelFuture future = bindSocket();
 
         // status server
         addStatusServer();
 
-        return null;
+        return future;
     }
 
-    private void bindSocket() {
+    private ChannelFuture bindSocket() {
 
         // bind
         final InetSocketAddress socketAddress = new InetSocketAddress(getLcServiceParam().getPort());
@@ -180,6 +180,8 @@ public class LcServerImpl extends LcService implements IMyLcServer {
                 }
             }
         });
+
+        return future;
     }
 
     private void addStatusServer() {

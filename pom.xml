@@ -38,7 +38,7 @@
         <lombok.version>1.14.4</lombok.version>
 
         <!--log-->
-        <slf4j.version>1.7.7</slf4j.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.5</logback.version>
 
         <!-- test -->
