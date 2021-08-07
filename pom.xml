@@ -32,10 +32,14 @@
         <log4j.version>1.2.16</log4j.version>
         <gson.version>2.5</gson.version>
         <jackson.version>2.7.0</jackson.version>
+        <netty.version>4.1.12.Final</netty.version>
+        <aspectj.version>1.8.9</aspectj.version>
+        <commons.lang3.version>3.5</commons.lang3.version>
+        <lombok.version>1.14.4</lombok.version>
 
         <!--log-->
         <slf4j.version>1.7.7</slf4j.version>
-        <logback.version>1.1.2</logback.version>
+        <logback.version>1.2.5</logback.version>
 
         <!-- test -->
         <junit.version>4.12</junit.version>
@@ -75,23 +79,21 @@
         <dependencies>
 
             <dependency>
-                <groupId>com.github.knightliao.vpaas.bom</groupId>
-                <artifactId>logback-bom</artifactId>
-                <optional>true</optional>
-                <type>pom</type>
-                <version>${bom.version}</version>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>4.1.12.Final</version>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.5</version>
+                <version>${commons.lang3.version}</version>
             </dependency>
 
             <dependency>
@@ -149,7 +151,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.14.4</version>
+                <version>${lombok.version}</version>
             </dependency>
 
             <dependency>
