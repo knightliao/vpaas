@@ -104,7 +104,7 @@ public class LcWrappedChannel extends LcWrappedBaseChannel {
         return future;
     }
 
-    private ChannelFuture writeAndFlush(Object message, boolean isStatistic) {
+    public ChannelFuture writeAndFlush(Object message, boolean isStatistic) {
 
         ChannelFuture future = channel.writeAndFlush(message);
 
