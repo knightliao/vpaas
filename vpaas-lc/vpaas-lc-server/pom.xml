@@ -16,6 +16,7 @@
     <modules>
         <module>vpaas-lc-server-basic</module>
         <module>vpaas-lc-server-service</module>
+        <module>vpaas-lc-server-start</module>
     </modules>
 
 </project>
