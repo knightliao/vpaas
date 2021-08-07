@@ -4,8 +4,13 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.github.knightliao.vpaas.common.utils.lang.Tuple2;
+import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
 import com.github.knightliao.vpaas.common.utils.net.NettyUtils;
+import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
+import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
+import com.github.knightliao.vpaas.lc.server.server.service.impl.status.StatusLcServerImpl;
 
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.epoll.EpollEventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -84,5 +89,17 @@ public class LcServerHelper {
 
     public static void listenToStatusServer(int statusPort) {
 
+        ILcServer lcServer = new StatusLcServerImpl();
+        ILcService lcService = (ILcService) lcServer;
+
+        lcService.getLcServiceParam().setPort(statusPort);
+        lcService.getLcServiceParam().setTcpNoDelay(true);
+        lcService.getLcServiceParam().setKeepAlive(true);
+
+        ChannelFuture channelFuture = lcServer.bind();
+        channelFuture.awaitUninterruptibly();
+
+        LoggerUtil.info(log, "statusServer start");
     }
+
 }

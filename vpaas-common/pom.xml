@@ -15,6 +15,7 @@
 
     <modules>
         <module>vpaas-utils</module>
+        <module>vpaas-basic-common</module>
     </modules>
 
 </project>

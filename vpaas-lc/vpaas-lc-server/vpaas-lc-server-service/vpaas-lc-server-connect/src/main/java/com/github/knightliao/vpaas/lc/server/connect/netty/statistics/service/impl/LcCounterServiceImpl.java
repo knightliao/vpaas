@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.lc.server.connect.netty.statistics.service.i
 
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
+import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
 import com.github.knightliao.vpaas.lc.server.connect.netty.statistics.dto.LcCountInfoDto;
 import com.github.knightliao.vpaas.lc.server.connect.netty.statistics.service.ILcCounterService;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
@@ -68,7 +69,9 @@ public class LcCounterServiceImpl implements ILcCounterService {
     public boolean isCountStatistic() {
         ILcServer lcServer = LcServerContext.getContext().getServer();
         if (lcServer != null) {
-            LcServiceParam serviceParam = lcServer.getLcServiceParam();
+
+            ILcService lcService = (ILcService) lcServer;
+            LcServiceParam serviceParam = lcService.getLcServiceParam();
             if (serviceParam.isOpenCount()) {
                 return true;
             }
@@ -80,7 +83,9 @@ public class LcCounterServiceImpl implements ILcCounterService {
     private LcCountInfoDto getLcCountInfoDto() {
 
         ILcServer lcServer = LcServerContext.getContext().getServer();
-        LcServiceParam serviceParam = lcServer.getLcServiceParam();
+        ILcService lcService = (ILcService) lcServer;
+
+        LcServiceParam serviceParam = lcService.getLcServiceParam();
         return serviceParam.getCountInfoDto();
     }
 }

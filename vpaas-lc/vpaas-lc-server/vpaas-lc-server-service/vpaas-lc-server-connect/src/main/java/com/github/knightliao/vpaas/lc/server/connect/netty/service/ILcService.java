@@ -15,8 +15,6 @@ import io.netty.channel.ChannelHandler;
  */
 public interface ILcService {
 
-    void init();
-
     void addEventListener(EventListener listener);
 
     void addChannelHandler(String key, ChannelHandler handler);

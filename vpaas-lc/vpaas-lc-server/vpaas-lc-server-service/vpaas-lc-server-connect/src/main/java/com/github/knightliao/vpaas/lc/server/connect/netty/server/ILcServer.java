@@ -21,8 +21,6 @@ public interface ILcServer {
 
     ChannelFuture bind();
 
-    LcServiceParam getLcServiceParam();
-
     LcWrappedChannel getChannel(String channelId);
 
     LcWrappedChannel getChannelByGroup(ChannelId channelId);

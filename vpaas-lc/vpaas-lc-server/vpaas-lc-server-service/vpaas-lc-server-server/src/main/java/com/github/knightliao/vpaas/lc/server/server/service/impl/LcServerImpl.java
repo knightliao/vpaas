@@ -1,10 +1,13 @@
 package com.github.knightliao.vpaas.lc.server.server.service.impl;
 
+import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.github.knightliao.vpaas.common.utils.lang.Tuple2;
+import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.vpaas.common.utils.net.NettyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.dispatch.dispatcher.LcEventDispatcherFactory;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.handler.LcCountHandler;
@@ -14,14 +17,19 @@ import com.github.knightliao.vpaas.lc.server.server.dto.MqttRequest;
 import com.github.knightliao.vpaas.lc.server.server.dto.ServerParam;
 import com.github.knightliao.vpaas.lc.server.server.service.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.LcServerHelper;
+import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.ServerPipeline;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.status.StatusLcServerImpl;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelId;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -65,7 +73,7 @@ public class LcServerImpl extends LcService implements IMyLcServer {
     }
 
     @Override
-    public void init() {
+    protected void init() {
 
         super.init();
 
@@ -136,7 +144,62 @@ public class LcServerImpl extends LcService implements IMyLcServer {
 
     @Override
     public ChannelFuture bind() {
+
+        // init instance
+        init();
+
+        // server bootstrap
+        newServerBootstrap();
+
+        // bind
+        bindSocket();
+
+        // status server
+        addStatusServer();
+
         return null;
+    }
+
+    private void bindSocket() {
+
+        // bind
+        final InetSocketAddress socketAddress = new InetSocketAddress(getLcServiceParam().getPort());
+        ChannelFuture future = bootstrap.bind(socketAddress);
+
+        // exit handler
+        future.addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture channelFuture) throws Exception {
+
+                channelFuture.await();
+                if (channelFuture.isSuccess()) {
+                    LoggerUtil.info(log, "server started, listening on {0} {1}", socketAddress, lcServiceParam.getIp());
+                } else {
+                    LoggerUtil.error(log, "Failed to start server {0} {1}, caused by {2}", socketAddress,
+                            lcServiceParam.getIp(), channelFuture.cause());
+                }
+            }
+        });
+    }
+
+    private void addStatusServer() {
+
+        if (serverParam.isOpenStatus()) {
+            LcServerHelper.listenToStatusServer(serverParam.getStatusPort());
+        }
+    }
+
+    private void newServerBootstrap() {
+
+        // bootstrap
+        bootstrap = new ServerBootstrap();
+        bootstrap.group(bossGroup, workerGroup);
+        bootstrap.childOption(ChannelOption.SO_KEEPALIVE, getLcServiceParam().isKeepAlive());
+        bootstrap.childOption(ChannelOption.TCP_NODELAY, getLcServiceParam().isTcpNoDelay());
+        bootstrap.channel(NettyUtils.useEpoll() ? EpollServerSocketChannel.class : NioServerSocketChannel.class);
+
+        // 分发器
+        bootstrap.childHandler(ServerPipeline.getChildChannelHandler(this, lcEventDispatcher, lcCountHandler));
     }
 
     @Override
@@ -159,7 +222,7 @@ public class LcServerImpl extends LcService implements IMyLcServer {
 
     @Override
     public long incrChannelMaxSize(boolean incr) {
-        if(incr){
+        if (incr) {
             return channelMaxSize.incrementAndGet();
         }
         return channelMaxSize.decrementAndGet();

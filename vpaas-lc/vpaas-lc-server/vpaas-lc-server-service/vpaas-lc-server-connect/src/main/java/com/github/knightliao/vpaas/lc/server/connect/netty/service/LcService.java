@@ -38,8 +38,7 @@ public abstract class LcService implements ILcService {
         Runtime.getRuntime().addShutdownHook(new ShutdownHook(this, lcServiceExecutorMgr));
     }
 
-    @Override
-    public void init() {
+    protected void init() {
 
         // 工作线程
         if (lcServiceParam.getWorkerCount() <= 0) {
