@@ -1,5 +1,6 @@
 package com.github.knightliao.vpaas.lc.server.server.listener.status;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -33,8 +34,26 @@ public class StatusMessageListener implements LcMessageEventListener {
             if (!StringUtils.isBlank((command))) {
 
                 Map<String, Object> resultMap = null;
+
                 if (command.equalsIgnoreCase(CMD_STATUS)) {
+
                     resultMap = LcServerStatusHelper.doGetStatus();
+
+                } else if (command.equalsIgnoreCase(CMD_CONFIG)) {
+
+                    resultMap = LcServerStatusHelper.doGetConfig();
+
+                } else if (command.equalsIgnoreCase(CMD_EXECUTORS)) {
+
+                    resultMap = LcServerStatusHelper.doGetExecutors();
+
+                } else if (command.equalsIgnoreCase(CMD_QUIT) || command.equalsIgnoreCase(CMD_EXIT)) {
+
+                    channel.close();
+                    return LcEventBehaviorEnum.BREAK;
+
+                } else {
+
                 }
 
                 //

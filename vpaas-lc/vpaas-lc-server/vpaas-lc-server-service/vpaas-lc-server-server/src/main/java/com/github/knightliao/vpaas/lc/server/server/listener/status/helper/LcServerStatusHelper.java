@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
 import com.github.knightliao.vpaas.lc.server.connect.netty.statistics.dto.LcCountInfoDto;
+import com.github.knightliao.vpaas.lc.server.connect.support.enums.ExecutorEnum;
 import com.github.knightliao.vpaas.lc.server.server.service.IMyLcServer;
 
 /**
@@ -66,6 +67,98 @@ public class LcServerStatusHelper {
                 resultMap.put("getLastReceiveTimeStamp()", lcCountInfoDto.getLastReceiveTimeStamp());
             } else {
                 resultMap.put("getLastReceiveTimeStamp()", 0);
+            }
+        }
+
+        return resultMap;
+    }
+
+    public static Map<String, Object> doGetExecutors() {
+
+        Map<String, Object> resultMap = new LinkedHashMap<>();
+        IMyLcServer server = (IMyLcServer) LcServerContext.getContext().getServer();
+        ILcService service = (ILcService) server;
+
+        if (server != null) {
+
+            // 名称
+            resultMap.put("getBrokerId", server.getServerParam().getBrokerId());
+            resultMap.put("getBrokerName", server.getServerParam().getBrokerName());
+
+            for (ExecutorEnum executorEnum : ExecutorEnum.values()) {
+
+                resultMap.put(executorEnum.getDesc() + "_getExecutorActiveCount_",
+                        service.getLcServiceExecutorMgr().getExecutorActiveCount(executorEnum));
+
+                resultMap.put(executorEnum.getDesc() + "_getExecutorCompletedTaskCount_",
+                        service.getLcServiceExecutorMgr().getExecutorCompletedTaskCount(executorEnum));
+
+                resultMap.put(executorEnum.getDesc() + "_getExecutorLargestPoolSize_",
+                        service.getLcServiceExecutorMgr().getExecutorLargestPoolSize(executorEnum));
+
+                resultMap.put(executorEnum.getDesc() + "_getExecutorPoolSize_",
+                        service.getLcServiceExecutorMgr().getExecutorPoolSize(executorEnum));
+
+                resultMap.put(executorEnum.getDesc() + "_getExecutorQueueSize_",
+                        service.getLcServiceExecutorMgr().getExecutorQueueSize(executorEnum));
+
+                resultMap.put(executorEnum.getDesc() + "_getExecutorTaskCount_",
+                        service.getLcServiceExecutorMgr().getExecutorTaskCount(executorEnum));
+            }
+        }
+
+        return resultMap;
+    }
+
+    public static Map<String, Object> doGetConfig() {
+
+        Map<String, Object> resultMap = new LinkedHashMap<>();
+        IMyLcServer server = (IMyLcServer) LcServerContext.getContext().getServer();
+        ILcService service = (ILcService) server;
+
+        if (server != null) {
+
+            // ip
+            resultMap.put("getIp",
+                    service.getLcServiceParam().getIp() == null ? "" : service.getLcServiceParam().getIp());
+
+            // port
+            resultMap.put("getPort", service.getLcServiceParam().getPort());
+
+            resultMap.put("getSocketType", service.getLcServiceParam().getSocketType());
+
+            resultMap.put("isKeepAlive", service.getLcServiceParam().isKeepAlive());
+
+            resultMap.put("isTcpNoDelay", service.getLcServiceParam().isTcpNoDelay());
+
+            resultMap.put("getWorkerCount", service.getLcServiceParam().getWorkerCount());
+
+            resultMap.put("getBossCount", service.getLcServiceParam().getBossCount());
+
+            //
+            resultMap.put("isOpenExecutor", service.getLcServiceParam().isOpenExecutor());
+            if (service.getLcServiceParam().isOpenExecutor()) {
+
+                resultMap.put("getCorePoolSize", service.getLcServiceParam().getCorePoolSize());
+                resultMap.put("getMaximumPoolSize", service.getLcServiceParam().getMaximumPoolSize());
+                resultMap.put("getQueueCapacity", service.getLcServiceParam().getQueueCapacity());
+
+                resultMap.put("getCorePoolChannelSize", service.getLcServiceParam().getCorePoolChannelSize());
+                resultMap.put("getMaximumPoolChannelSize", service.getLcServiceParam().getMaximumPoolChannelSize());
+                resultMap.put("getQueueChannelCapacity", service.getLcServiceParam().getQueueChannelCapacity());
+
+                resultMap.put("getCorePoolExceptionSize", service.getLcServiceParam().getCorePoolExceptionSize());
+                resultMap.put("getMaximumPoolExceptionSize", service.getLcServiceParam().getMaximumPoolExceptionSize());
+                resultMap.put("getQueueExceptionCapacity", service.getLcServiceParam().getQueueExceptionCapacity());
+            }
+
+            //
+            resultMap.put("isCheckHeartbeat", service.getLcServiceParam().isCheckHeartbeat());
+            if (service.getLcServiceParam().isCheckHeartbeat()) {
+
+                resultMap.put("getReadIdleTimeSeconds", service.getLcServiceParam().getReadIdleTimeSeconds());
+                resultMap.put("getWriteIdleTimeSeconds", service.getLcServiceParam().getWriteIdleTimeSeconds());
+                resultMap.put("getAllIdleTimeSeconds", service.getLcServiceParam().getAllIdleTimeSeconds());
             }
         }
 
