@@ -18,7 +18,7 @@ public class SimpleNewServerFactory {
         //
         ServerOptionsDto serverOptionsDto = new ServerOptionsDto();
         serverOptionsDto.setBrokerId(brokerId);
-        serverOptionsDto.setPort(8000);
+        serverOptionsDto.setPort(7000);
 
         //
         IMyLcServer server = (IMyLcServer) serverNewService.newServer(serverOptionsDto);

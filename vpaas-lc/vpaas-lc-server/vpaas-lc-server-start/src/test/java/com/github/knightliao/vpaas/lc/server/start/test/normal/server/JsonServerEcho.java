@@ -15,7 +15,7 @@ public class JsonServerEcho {
     public static void main(String[] args) throws Exception {
 
         ServerOptionsDto serverOptionsDto = new ServerOptionsDto();
-        serverOptionsDto.setPort(8000);
+        serverOptionsDto.setPort(7000);
         serverOptionsDto.setSocketType(SocketType.JSON);
 
         //

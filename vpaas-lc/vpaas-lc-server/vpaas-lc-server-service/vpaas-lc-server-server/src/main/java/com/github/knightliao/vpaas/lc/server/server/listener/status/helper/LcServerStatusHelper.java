@@ -46,7 +46,7 @@ public class LcServerStatusHelper {
             resultMap.put("getBrokerId", server.getServerParam().getBrokerId());
             resultMap.put("getBrokerName", server.getServerParam().getBrokerName());
             resultMap.put("getWebSocketPath", server.getServerParam().getWebSocketPath());
-            resultMap.put("getMqttVersion", server.getServerParam().getMqttVersion().replace(" ", ""));
+            resultMap.put("getMqttVersion", server.getServerParam().getMqttVersion());
 
             // server启动时间
             resultMap.put("getStartTime", server.getServerParam().getStartTime());

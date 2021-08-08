@@ -30,7 +30,7 @@ public class StatusMessageListener implements LcMessageEventListener {
 
             String command = (String) msg;
 
-            if (StringUtils.isBlank((command))) {
+            if (!StringUtils.isBlank((command))) {
 
                 Map<String, Object> resultMap = null;
                 if (command.equalsIgnoreCase(CMD_STATUS)) {

@@ -13,7 +13,7 @@ public class ServerParam {
     private long startTime = System.currentTimeMillis();
 
     // 统计信息端口，默认8001
-    protected int statusPort = 8001;
+    protected int statusPort = 7001;
 
     // 服务名称
     private String brokerName;

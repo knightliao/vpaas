@@ -15,8 +15,8 @@ public class LcServiceParam {
     // socket类型
     private SocketType socketType = SocketType.NORMAL;
 
-    // 绑定端口，默认为8000
-    private int port = 8000;
+    // 绑定端口，默认为 7000
+    private int port = 7000;
 
     // 多ip情况下绑定指定ip(可以不设置）
     private String ip;
