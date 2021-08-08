@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.lc.server.server.service;
+package com.github.knightliao.vpaas.lc.server.server;
 
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;

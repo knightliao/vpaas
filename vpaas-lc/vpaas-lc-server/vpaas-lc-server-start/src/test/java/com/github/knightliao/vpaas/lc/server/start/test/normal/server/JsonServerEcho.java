@@ -1,7 +1,7 @@
 package com.github.knightliao.vpaas.lc.server.start.test.normal.server;
 
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.SocketType;
-import com.github.knightliao.vpaas.lc.server.server.service.IMyLcServer;
+import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.session.service.listener.json.JsonEchoMessageEventListener;
 import com.github.knightliao.vpaas.lc.server.start.factory.SimpleNewServerFactory;
 import com.github.knightliao.vpaas.lc.server.start.support.dto.ServerOptionsDto;

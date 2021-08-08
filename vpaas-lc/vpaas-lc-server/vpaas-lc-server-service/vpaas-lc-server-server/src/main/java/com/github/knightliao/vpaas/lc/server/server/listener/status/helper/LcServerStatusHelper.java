@@ -9,7 +9,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContex
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
 import com.github.knightliao.vpaas.lc.server.connect.netty.statistics.dto.LcCountInfoDto;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.ExecutorEnum;
-import com.github.knightliao.vpaas.lc.server.server.service.IMyLcServer;
+import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 
 /**
  * @author knightliao

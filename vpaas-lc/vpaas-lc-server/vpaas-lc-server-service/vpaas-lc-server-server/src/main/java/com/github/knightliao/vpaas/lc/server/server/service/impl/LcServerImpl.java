@@ -15,7 +15,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContex
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
 import com.github.knightliao.vpaas.lc.server.server.dto.MqttRequest;
 import com.github.knightliao.vpaas.lc.server.server.dto.ServerParam;
-import com.github.knightliao.vpaas.lc.server.server.service.IMyLcServer;
+import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.LcServerHelper;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.ServerPipeline;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.status.StatusLcServerImpl;

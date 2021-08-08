@@ -9,7 +9,7 @@ import com.github.knightliao.vpaas.common.utils.net.IpUtils;
 import com.github.knightliao.vpaas.lc.server.common.common.constants.VpaasServerConstants;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
-import com.github.knightliao.vpaas.lc.server.server.service.IMyLcServer;
+import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.LcServerImpl;
 import com.github.knightliao.vpaas.lc.server.start.service.IServerNewService;
 import com.github.knightliao.vpaas.lc.server.start.support.dto.ServerOptionsDto;

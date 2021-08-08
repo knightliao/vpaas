@@ -1,6 +1,6 @@
 package com.github.knightliao.vpaas.lc.server.start.factory;
 
-import com.github.knightliao.vpaas.lc.server.server.service.IMyLcServer;
+import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.start.service.IServerNewService;
 import com.github.knightliao.vpaas.lc.server.start.service.impl.ServerNewServiceImpl;
 import com.github.knightliao.vpaas.lc.server.start.support.dto.ServerOptionsDto;

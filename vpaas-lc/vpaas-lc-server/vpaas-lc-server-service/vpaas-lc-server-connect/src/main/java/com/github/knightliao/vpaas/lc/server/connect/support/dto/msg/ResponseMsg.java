@@ -12,7 +12,6 @@ import lombok.ToString;
 public class ResponseMsg extends BaseMessage {
 
     public static final int EXCEPTION = -1;
-
     public static final int SUCCESS = 0;
 
     private int code;
