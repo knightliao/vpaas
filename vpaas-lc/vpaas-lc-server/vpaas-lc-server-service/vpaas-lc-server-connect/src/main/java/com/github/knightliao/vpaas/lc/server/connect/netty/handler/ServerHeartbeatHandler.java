@@ -7,6 +7,7 @@ import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.Channel
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.LcHeartbeatMsg;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.DispatcherOpEnum;
 import com.github.knightliao.vpaas.lc.server.connect.support.log.VpaasServerConnectLogUtils;
+import com.github.knightliao.vpaas.lc.server.connect.support.utils.LcServiceTraceHandler;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -28,6 +29,9 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
 
         try {
+
+            //
+            LcServiceTraceHandler.startTraceAndSession(ctx.channel());
 
             if (evt instanceof IdleStateHandler) {
 
@@ -63,6 +67,8 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
 
         } finally {
 
+            //
+            LcServiceTraceHandler.stopTrace();
         }
 
     }
@@ -74,6 +80,9 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
         stopWatch.start();
 
         try {
+
+            //
+            LcServiceTraceHandler.startTraceAndSession(ctx.channel());
 
             if (msg instanceof LcHeartbeatMsg) {
 
@@ -89,6 +98,9 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
 
             stopWatch.stop();
             VpaasServerConnectLogUtils.doConnectLog(DispatcherOpEnum.heartbeat, ctx.channel(), stopWatch.getTime());
+
+            //
+            LcServiceTraceHandler.stopTrace();
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.github.knightliao.vpaas.lc.server.connect.netty.server;
 
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.server.ServerLogData;
+import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnum;
 
 import lombok.Data;
 
@@ -14,6 +15,7 @@ public class LcServerContext {
     private ILcServer server;
     private int brokerId;
     private ServerLogData serverLogData;
+    private ServerTypeEnum serverTypeEnum = ServerTypeEnum.NONE;
 
     private static LcServerContext lcServerContext = new LcServerContext();
 

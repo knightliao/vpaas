@@ -11,8 +11,7 @@ public enum ServerTypeEnum {
 
     NONE("NONE", 0),
     SERVER("SERVER", 1),
-    CLIENT("CLIENT", 2),
-    SERVER_STATUS("SERVER_STATUS", 3);
+    CLIENT("CLIENT", 2);
 
     private final String desc;
     private final int value;

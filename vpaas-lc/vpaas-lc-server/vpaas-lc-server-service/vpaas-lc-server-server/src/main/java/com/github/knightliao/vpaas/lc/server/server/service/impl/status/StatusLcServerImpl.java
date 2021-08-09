@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
 import com.github.knightliao.vpaas.common.utils.net.NettyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
-import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnum;
 import com.github.knightliao.vpaas.lc.server.server.listener.status.StatusMessageListener;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.LcServerImpl;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.ServerPipeline;
@@ -47,6 +46,7 @@ public class StatusLcServerImpl extends LcServerImpl {
 
         //
         this.addEventListener(new StatusMessageListener());
+
     }
 
     @Override

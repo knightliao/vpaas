@@ -76,6 +76,7 @@ public class LcServerStatusHelper {
     public static Map<String, Object> doGetExecutors() {
 
         Map<String, Object> resultMap = new LinkedHashMap<>();
+
         IMyLcServer server = (IMyLcServer) LcServerContext.getContext().getServer();
         ILcService service = (ILcService) server;
 

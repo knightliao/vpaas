@@ -12,9 +12,11 @@ import com.github.knightliao.vpaas.lc.client.netty.client.IBaseClient;
 import com.github.knightliao.vpaas.lc.client.netty.pipeline.LcClientPipeline;
 import com.github.knightliao.vpaas.lc.client.support.dto.LcClientParam;
 import com.github.knightliao.vpaas.lc.server.connect.dispatch.dispatcher.LcEventDispatcherFactory;
+import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.RequestMsg;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.ResponseMsg;
+import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnum;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -51,6 +53,9 @@ public class BaseClient extends LcService implements IBaseClient {
     public void init() {
 
         super.init();
+
+        //
+        LcServerContext.getContext().setServerTypeEnum(ServerTypeEnum.CLIENT);
 
         //
         lcEventDispatcher = LcEventDispatcherFactory.getEventDispatcherDefaultImpl(this);

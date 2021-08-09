@@ -13,6 +13,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChan
 import com.github.knightliao.vpaas.lc.server.connect.netty.handler.LcCountHandler;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
+import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnum;
 import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.server.dto.MqttRequest;
 import com.github.knightliao.vpaas.lc.server.server.dto.ServerParam;
@@ -97,6 +98,7 @@ public class LcServerImpl extends LcService implements IMyLcServer {
         // context
         if (!(this instanceof StatusLcServerImpl)) {
             LcServerContext.getContext().setServer(this);
+            LcServerContext.getContext().setServerTypeEnum(ServerTypeEnum.SERVER);
             LcServerContext.getContext().setBrokerId(serverParam.getBrokerId());
         }
     }

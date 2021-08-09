@@ -9,6 +9,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContex
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.ChannelKeyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.server.ServerLogData;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.DispatcherOpEnum;
+import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnum;
 
 import io.netty.channel.Channel;
 
@@ -19,8 +20,6 @@ import io.netty.channel.Channel;
 public class VpaasServerConnectLogUtils {
 
     private static Logger LOGGER_CONNECT_OP_LOG = LoggerFactory.getLogger(VpaasServerConstants.LOGGER_CONNECT_OP_LOG);
-    private static Logger LOGGER_CONNECT_CLIENT_OP_LOG =
-            LoggerFactory.getLogger(VpaasServerConstants.LOGGER_CONNECT_CLIENT_OP_LOG);
 
     public static void doConnectLog(DispatcherOpEnum dispatcherOpEnum, Channel channel, long cost) {
 
@@ -29,11 +28,13 @@ public class VpaasServerConnectLogUtils {
             if (channel != null) {
 
                 if (isPrintLog()) {
-                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2}",
+                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
+                            getServerType(),
                             dispatcherOpEnum.getDesc(),
                             ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
                 } else {
-                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2}",
+                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
+                            getServerType(),
                             dispatcherOpEnum.getDesc(),
                             ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
                 }
@@ -44,26 +45,14 @@ public class VpaasServerConnectLogUtils {
         }
     }
 
-    public static void doConnectLog4Client(DispatcherOpEnum dispatcherOpEnum, Channel channel, long cost) {
+    private static int getServerType() {
 
-        try {
-
-            if (channel != null) {
-
-                if (isPrintLog()) {
-                    LoggerUtil.info(LOGGER_CONNECT_CLIENT_OP_LOG, "{0} {1} {2}",
-                            dispatcherOpEnum.getDesc(),
-                            ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
-                } else {
-                    LoggerUtil.info(LOGGER_CONNECT_CLIENT_OP_LOG, "{0} {1} {2}",
-                            dispatcherOpEnum.getDesc(),
-                            ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
-                }
-            }
-
-        } finally {
-
+        //
+        ServerTypeEnum serverTypeEnum = LcServerContext.getContext().getServerTypeEnum();
+        if (serverTypeEnum != null) {
+            return serverTypeEnum.getValue();
         }
+        return ServerTypeEnum.NONE.getValue();
     }
 
     private static boolean isPrintLog() {
