@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.lc.client.netty.client;
 
 import java.net.SocketAddress;
 
+import com.github.knightliao.vpaas.lc.client.support.dto.LcClientParam;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.RequestMsg;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.ResponseMsg;
 
@@ -29,4 +30,6 @@ public interface IBaseClient {
     Channel getChannel();
 
     void setChannel(Channel channel);
+
+    LcClientParam getLcClientParam();
 }

@@ -1,5 +1,6 @@
 package com.github.knightliao.vpaas.lc.server.session.service.listener.json;
 
+import com.github.knightliao.vpaas.common.utils.async.future.IInvokeFuture;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcMessageEventListener;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.RequestMsg;
@@ -29,6 +30,19 @@ public class JsonEchoMessageEventListener implements LcMessageEventListener {
                 responseMsg.setResult(requestMsg.getMessage().toString());
 
                 channel.writeAndFlush(responseMsg);
+            }
+
+        } else if (msg instanceof ResponseMsg) {
+
+            ResponseMsg responseMsg = (ResponseMsg) msg;
+
+            IInvokeFuture future = channel.getFutures().remove(responseMsg.getSequence());
+            if (future != null) {
+                if (responseMsg.getCause() != null) {
+                    future.setCause(responseMsg.getCause());
+                } else {
+                    future.setResult(responseMsg);
+                }
             }
         }
 

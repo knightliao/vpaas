@@ -9,6 +9,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContex
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.ChannelKeyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.server.ServerLogData;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.DispatcherOpEnum;
+import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnum;
 
 import io.netty.channel.Channel;
 
@@ -27,10 +28,14 @@ public class VpaasServerConnectLogUtils {
             if (channel != null) {
 
                 if (isPrintLog()) {
-                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2}", dispatcherOpEnum.getDesc(),
+                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
+                            serverType(),
+                            dispatcherOpEnum.getDesc(),
                             ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
-                }else{
-                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2}", dispatcherOpEnum.getDesc(),
+                } else {
+                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
+                            serverType(),
+                            dispatcherOpEnum.getDesc(),
                             ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
                 }
             }
@@ -38,6 +43,10 @@ public class VpaasServerConnectLogUtils {
         } finally {
 
         }
+    }
+
+    private static int serverType() {
+        return ServerTypeEnum.NONE.getValue();
     }
 
     private static boolean isPrintLog() {

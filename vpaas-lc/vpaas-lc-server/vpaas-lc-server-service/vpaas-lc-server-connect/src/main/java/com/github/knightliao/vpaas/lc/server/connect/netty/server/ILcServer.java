@@ -4,7 +4,6 @@ import java.util.EventListener;
 import java.util.Map;
 
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
-import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
 
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandler;
@@ -36,6 +35,7 @@ public interface ILcServer {
 
     // 添加自定义 channel handler
     void addChannelHandler(String key, ChannelHandler channelHandler);
+
 }
 
 

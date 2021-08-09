@@ -13,9 +13,9 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChan
 import com.github.knightliao.vpaas.lc.server.connect.netty.handler.LcCountHandler;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
+import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.server.dto.MqttRequest;
 import com.github.knightliao.vpaas.lc.server.server.dto.ServerParam;
-import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.LcServerHelper;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.ServerPipeline;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.status.StatusLcServerImpl;
@@ -173,7 +173,8 @@ public class LcServerImpl extends LcService implements IMyLcServer {
 
                 channelFuture.await();
                 if (channelFuture.isSuccess()) {
-                    LoggerUtil.info(log, "server started, listening on {0} {1}", socketAddress, lcServiceParam.getIp());
+                    LoggerUtil.info(log, "server started, listening on: {0} {1}, socketType: {2}", socketAddress,
+                            lcServiceParam.getIp(), lcServiceParam.getSocketType().getDesc());
                 } else {
                     LoggerUtil.error(log, "Failed to start server {0} {1}, caused by {2}", socketAddress,
                             lcServiceParam.getIp(), channelFuture.cause());
@@ -234,4 +235,5 @@ public class LcServerImpl extends LcService implements IMyLcServer {
     public ChannelGroup getChannelGroup() {
         return channelGroup;
     }
+
 }

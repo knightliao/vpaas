@@ -17,6 +17,7 @@ import io.netty.channel.ChannelPromise;
 import io.netty.channel.EventLoop;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
+import lombok.Getter;
 
 /**
  * 重写channel
@@ -30,6 +31,7 @@ public abstract class LcWrappedBaseChannel implements Channel {
     protected Channel channel;
 
     // 记录所有发送的指针
+    @Getter
     protected ConcurrentHashMap<Long, IInvokeFuture> futures = new ConcurrentHashMap<>();
 
     @Override

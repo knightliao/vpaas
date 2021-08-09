@@ -33,6 +33,8 @@ public interface IMyLcClient {
 
     LcClientParam getParam();
 
+    ChannelFuture connectWait();
+
     boolean connectWait(int timeoutMs);
 
     ChannelFuture send(Object message);

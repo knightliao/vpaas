@@ -12,7 +12,6 @@ import com.github.knightliao.vpaas.lc.client.netty.client.IBaseClient;
 import com.github.knightliao.vpaas.lc.client.netty.pipeline.LcClientPipeline;
 import com.github.knightliao.vpaas.lc.client.support.dto.LcClientParam;
 import com.github.knightliao.vpaas.lc.server.connect.dispatch.dispatcher.LcEventDispatcherFactory;
-import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.RequestMsg;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.ResponseMsg;
@@ -78,7 +77,7 @@ public class BaseClient extends LcService implements IBaseClient {
                     channelFuture.await();
 
                     if (channelFuture.isSuccess()) {
-                        channel = new LcWrappedChannel(channelFuture.channel());
+                        channel = new LcWrappedClientChannel(channelFuture.channel());
 
                         //
                         LoggerUtil.debug(log, "Connect to {0} success", socketAddress);
@@ -190,5 +189,10 @@ public class BaseClient extends LcService implements IBaseClient {
     @Override
     public void setChannel(Channel channel) {
         this.channel = channel;
+    }
+
+    @Override
+    public LcClientParam getLcClientParam() {
+        return lcClientParam;
     }
 }

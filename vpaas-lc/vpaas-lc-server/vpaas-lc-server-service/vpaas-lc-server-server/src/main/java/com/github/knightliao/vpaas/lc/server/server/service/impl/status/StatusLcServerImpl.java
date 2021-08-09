@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
 import com.github.knightliao.vpaas.common.utils.net.NettyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
+import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnum;
 import com.github.knightliao.vpaas.lc.server.server.listener.status.StatusMessageListener;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.LcServerImpl;
 import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.ServerPipeline;
@@ -82,7 +83,8 @@ public class StatusLcServerImpl extends LcServerImpl {
 
                 channelFuture.await();
                 if (channelFuture.isSuccess()) {
-                    LoggerUtil.info(log, "Status Server started, listening on {0}", socketAddr);
+                    LoggerUtil.info(log, "Status Server started, listening on {0}, socketType: {1}", socketAddr,
+                            lcServiceParam.getSocketType().getDesc());
                 } else {
                     LoggerUtil.error(log, "Failed to start status server {0}, caused by {1}", socketAddr,
                             channelFuture.cause());

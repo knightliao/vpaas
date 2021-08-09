@@ -27,6 +27,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-basic-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>

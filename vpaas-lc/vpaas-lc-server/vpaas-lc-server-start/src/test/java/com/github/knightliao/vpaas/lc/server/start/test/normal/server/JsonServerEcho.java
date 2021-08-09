@@ -4,7 +4,6 @@ import com.github.knightliao.vpaas.lc.server.connect.support.enums.SocketType;
 import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.session.service.listener.json.JsonEchoMessageEventListener;
 import com.github.knightliao.vpaas.lc.server.start.factory.SimpleNewServerFactory;
-import com.github.knightliao.vpaas.lc.server.start.support.dto.ServerOptionsDto;
 
 /**
  * @author knightliao
@@ -14,12 +13,8 @@ public class JsonServerEcho {
 
     public static void main(String[] args) throws Exception {
 
-        ServerOptionsDto serverOptionsDto = new ServerOptionsDto();
-        serverOptionsDto.setPort(7000);
-        serverOptionsDto.setSocketType(SocketType.JSON);
-
         //
-        IMyLcServer myLcServer = SimpleNewServerFactory.newServer(0);
+        IMyLcServer myLcServer = SimpleNewServerFactory.newServer(0, SocketType.JSON);
         //
         myLcServer.addEventListener(new JsonEchoMessageEventListener());
 
