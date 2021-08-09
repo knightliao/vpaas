@@ -49,5 +49,7 @@ public class JsonClientEcho {
 
             Thread.sleep(1000);
         }
+
+        System.exit(-1);
     }
 }

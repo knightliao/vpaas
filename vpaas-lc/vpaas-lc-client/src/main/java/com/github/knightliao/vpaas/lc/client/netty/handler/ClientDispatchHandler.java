@@ -50,7 +50,8 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
         } finally {
 
             stopWatch.stop();
-            VpaasServerConnectLogUtils.doConnectLog(DispatcherOpEnum.channelRead, ctx.channel(), stopWatch.getTime());
+            VpaasServerConnectLogUtils
+                    .doConnectLog4Client(DispatcherOpEnum.channelRead, ctx.channel(), stopWatch.getTime());
         }
     }
 
@@ -71,7 +72,8 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
         } finally {
 
             stopWatch.stop();
-            VpaasServerConnectLogUtils.doConnectLog(DispatcherOpEnum.channelActive, ctx.channel(), stopWatch.getTime());
+            VpaasServerConnectLogUtils
+                    .doConnectLog4Client(DispatcherOpEnum.channelActive, ctx.channel(), stopWatch.getTime());
         }
     }
 
@@ -89,7 +91,7 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
 
             stopWatch.stop();
             VpaasServerConnectLogUtils
-                    .doConnectLog(DispatcherOpEnum.channelInActive, ctx.channel(), stopWatch.getTime());
+                    .doConnectLog4Client(DispatcherOpEnum.channelInActive, ctx.channel(), stopWatch.getTime());
         }
     }
 
@@ -117,7 +119,7 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
 
             stopWatch.stop();
             VpaasServerConnectLogUtils
-                    .doConnectLog(DispatcherOpEnum.exceptionCaught, ctx.channel(), stopWatch.getTime());
+                    .doConnectLog4Client(DispatcherOpEnum.exceptionCaught, ctx.channel(), stopWatch.getTime());
         }
     }
 

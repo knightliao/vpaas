@@ -90,6 +90,19 @@
         </appender>
     </logger>
 
+    <logger name="LOGGER_CONNECT_CLIENT_OP_LOG" additivity="false" level="INFO">
+        <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${serverName}/logger_connect_client_op_log.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${serverName}/logger_connect_client_op_log.log.%d{yyyy-MM-dd}
+                </FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${pattern}</pattern>
+            </layout>
+        </appender>
+    </logger>
+
     <logger name="io.codis.jodis">
         <level value="DEBUG"/>
     </logger>
