@@ -342,10 +342,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <!-- jdk1.8要加上，1.7要去掉，否则会报错 -->
-                    <additionalJOptions>
-                        <additionalJOption>-Xdoclint:none</additionalJOption>
-                    </additionalJOptions>
+                    <doclint>none</doclint>
                 </configuration>
                 <executions>
                     <execution>
