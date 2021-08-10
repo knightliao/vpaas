@@ -8,3 +8,4 @@
 .idea
 /log
 /vpaas-lc/vpaas-lc-server/vpaas-lc-server-start/dependency-reduced-pom.xml
+*.iml
