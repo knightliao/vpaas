@@ -80,11 +80,11 @@ public class DefaultMqttMessageEventListener implements LcMessageEventListener {
         return LcEventBehaviorEnum.CONTINUE;
     }
 
-    private void publish(LcWrappedChannel channel, MqttPublishMessage msg) {
+    protected void publish(LcWrappedChannel channel, MqttPublishMessage msg) {
 
     }
 
-    private void connect(LcWrappedChannel channel, MqttConnectMessage msg) {
+    protected void connect(LcWrappedChannel channel, MqttConnectMessage msg) {
 
         LoggerUtil.debug(log, "MQTT CONNECT received on channel {0} clientId is {1}",
                 ChannelKeyUtils.getChannelLocalId(channel), msg.payload().clientIdentifier());
@@ -96,7 +96,7 @@ public class DefaultMqttMessageEventListener implements LcMessageEventListener {
         channel.writeAndFlush(okResp);
     }
 
-    private void subscribe(LcWrappedChannel channel, MqttSubscribeMessage msg) {
+    protected void subscribe(LcWrappedChannel channel, MqttSubscribeMessage msg) {
 
         MqttSubscribeMessage subAckMessage = (MqttSubscribeMessage) MqttMessageFactory.newMessage(
                 new MqttFixedHeader(MqttMessageType.SUBACK, false, MqttQoS.AT_MOST_ONCE, false, 0),
@@ -105,7 +105,7 @@ public class DefaultMqttMessageEventListener implements LcMessageEventListener {
         channel.writeAndFlush(subAckMessage);
     }
 
-    private void unSubscribe(LcWrappedChannel channel, MqttUnsubscribeMessage msg) {
+    protected void unSubscribe(LcWrappedChannel channel, MqttUnsubscribeMessage msg) {
 
         MqttUnsubAckMessage unsubAckMessage = (MqttUnsubAckMessage) MqttMessageFactory.newMessage(
                 new MqttFixedHeader(MqttMessageType.UNSUBACK, false, MqttQoS.AT_MOST_ONCE, false, 0),
@@ -113,7 +113,7 @@ public class DefaultMqttMessageEventListener implements LcMessageEventListener {
         channel.writeAndFlush(unsubAckMessage);
     }
 
-    private void pingReq(LcWrappedChannel channel, MqttMessage msg) {
+    protected void pingReq(LcWrappedChannel channel, MqttMessage msg) {
 
         LoggerUtil.debug(log, "MQTT pingReq received.");
 
@@ -126,12 +126,12 @@ public class DefaultMqttMessageEventListener implements LcMessageEventListener {
         channel.writeAndFlush(pingResp);
     }
 
-    private void pingResp(LcWrappedChannel channel, MqttMessage msg) {
+    protected void pingResp(LcWrappedChannel channel, MqttMessage msg) {
 
         LoggerUtil.debug(log, "{0}", msg.toString());
     }
 
-    private void disConnect(LcWrappedChannel channel, MqttMessage msg) {
+    protected void disConnect(LcWrappedChannel channel, MqttMessage msg) {
 
         if (channel.isActive()) {
             channel.close();

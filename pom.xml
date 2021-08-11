@@ -19,7 +19,7 @@
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <spring.version>4.2.4.RELEASE</spring.version>
+        <spring.version>2.3.12.RELEASE</spring.version>
 
         <!-- JAVA环境 -->
         <java.version>1.8</java.version>
@@ -77,6 +77,12 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>io.netty</groupId>

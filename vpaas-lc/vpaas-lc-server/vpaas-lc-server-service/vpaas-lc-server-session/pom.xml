@@ -16,6 +16,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-connect</artifactId>
             <version>0.0.1-SNAPSHOT</version>
