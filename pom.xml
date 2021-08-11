@@ -13,7 +13,7 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <bom.version>0.0.1-SNAPSHOT</bom.version>
+        <bom.version>0.0.2</bom.version>
 
         <!-- Spring項目配置 -->
         <encoding>UTF-8</encoding>
@@ -51,7 +51,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.knightliao.vpaas.bom</groupId>
+            <groupId>com.github.knightliao.middle.bom</groupId>
             <artifactId>all-bom</artifactId>
             <optional>true</optional>
             <type>pom</type>
@@ -86,7 +86,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.github.knightliao.vpaas.bom</groupId>
+                <groupId>com.github.knightliao.middle.bom</groupId>
                 <artifactId>all-bom</artifactId>
                 <optional>true</optional>
                 <type>pom</type>
@@ -301,7 +301,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <doclint>none</doclint>
+                    <!-- jdk1.8要加上，1.7要去掉，否则会报错 -->
+                    <additionalJOptions>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                    </additionalJOptions>
                 </configuration>
                 <executions>
                     <execution>
