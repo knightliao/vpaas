@@ -19,13 +19,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.github.knightliao.vpaas.bom</groupId>
-            <artifactId>logback-bom</artifactId>
-            <optional>true</optional>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
         </dependency>
