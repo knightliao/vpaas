@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.lc.server.session.service.store.dto;
+package com.github.knightliao.vpaas.common.store.dto;
 
 import lombok.Data;
 import lombok.experimental.Builder;
@@ -12,11 +12,29 @@ import lombok.experimental.Tolerate;
 @Builder
 public class SessionStoreDto {
 
-    // 业务id
-    private String groupKey;
+    @Data
+    @Builder
+    public static class SessionStoreKeyDto {
+        // 业务id
+        private String groupKey;
 
-    // brokerid
-    private Integer brokerId;
+        // brokerid
+        private Integer brokerId;
+
+        // 客户端id
+        private String clientId;
+
+        // 登录uid
+        private long uid;
+
+        @Tolerate
+        public SessionStoreKeyDto() {
+
+        }
+    }
+
+    //
+    private SessionStoreKeyDto sessionStoreKeyDto;
 
     // 服务器ip
     private String serverIp;
@@ -26,9 +44,6 @@ public class SessionStoreDto {
 
     // 客户端ip
     private String clientIp;
-
-    // 登录uid
-    private long uid;
 
     // 通道id
     private String channelLocalId;
