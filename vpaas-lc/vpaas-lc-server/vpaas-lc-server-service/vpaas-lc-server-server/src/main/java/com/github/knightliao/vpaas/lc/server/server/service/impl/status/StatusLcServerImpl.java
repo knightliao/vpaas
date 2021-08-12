@@ -4,7 +4,7 @@ import java.net.InetSocketAddress;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.common.utils.net.NettyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
 import com.github.knightliao.vpaas.lc.server.server.listener.status.StatusMessageListener;

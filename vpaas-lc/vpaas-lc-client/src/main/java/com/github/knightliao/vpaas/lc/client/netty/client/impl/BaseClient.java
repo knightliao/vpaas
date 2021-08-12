@@ -5,8 +5,8 @@ import java.net.SocketTimeoutException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-import com.github.knightliao.vpaas.common.utils.exceptions.SocketRuntimeException;
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.lang.exceptions.SocketRuntimeException;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.client.netty.channel.LcWrappedClientChannel;
 import com.github.knightliao.vpaas.lc.client.netty.client.IBaseClient;
 import com.github.knightliao.vpaas.lc.client.netty.pipeline.LcClientPipeline;

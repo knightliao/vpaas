@@ -13,7 +13,7 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <bom.version>0.0.3-SNAPSHOT</bom.version>
+        <middle.version>0.0.8-SNAPSHOT</middle.version>
 
         <!-- Spring項目配置 -->
         <encoding>UTF-8</encoding>
@@ -89,7 +89,25 @@
                 <artifactId>all-bom</artifactId>
                 <optional>true</optional>
                 <type>pom</type>
-                <version>${bom.version}</version>
+                <version>${middle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.knightliao.middle</groupId>
+                <artifactId>middle-redis</artifactId>
+                <version>${middle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.knightliao.middle</groupId>
+                <artifactId>pack-log</artifactId>
+                <version>${middle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.knightliao.middle</groupId>
+                <artifactId>pack-lang</artifactId>
+                <version>${middle.version}</version>
             </dependency>
 
             <dependency>

@@ -59,7 +59,11 @@ public class Connect implements ProtocolProcessor {
                 return ;
             }
 
-            // password
+            // check token (token is password)
+            VpaasConnectCommonEnum tokenCheck = connectHelper.checkTokenValid(clientId,
+                    mqttConnectMessage.payload().password());
+
+
 
 
         } finally {

@@ -1,9 +1,13 @@
 package com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.helper;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
+import com.github.knightliao.vpaas.common.store.ITokenStoreService;
 import com.github.knightliao.vpaas.lc.server.session.service.dto.VpaasClientDto;
 import com.github.knightliao.vpaas.lc.server.session.service.dto.VpaasCommonUserNameDto;
+import com.github.knightliao.vpaas.lc.server.session.service.support.enums.VpaasConnectCommonEnum;
 
 import io.netty.handler.codec.mqtt.MqttConnectMessage;
 
@@ -13,6 +17,9 @@ import io.netty.handler.codec.mqtt.MqttConnectMessage;
  */
 @Service
 public class ConnectHelper {
+
+    @Resource
+    private ITokenStoreService tokenStoreService;
 
     // 确定client id是否Ok
     public VpaasClientDto checkClientId(MqttConnectMessage mqttConnectMessage) {
@@ -27,4 +34,11 @@ public class ConnectHelper {
 
         return VpaasCommonUserNameDto.parse(mqttConnectMessage.payload().userName());
     }
+
+    // token ( password)
+    public VpaasConnectCommonEnum checkTokenValid(String clientId, String tokenInput) {
+
+        return null;
+    }
+
 }

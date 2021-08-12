@@ -1,7 +1,7 @@
 package com.github.knightliao.vpaas.lc.server.start.test.normal.server;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.client.IMyLcClient;
 import com.github.knightliao.vpaas.lc.client.service.helper.VpaasClientFactory;
 import com.github.knightliao.vpaas.lc.client.support.dto.ClientOptions;

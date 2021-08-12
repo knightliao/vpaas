@@ -2,7 +2,7 @@ package com.github.knightliao.vpaas.lc.server.connect.netty.channel;
 
 import java.nio.channels.ClosedChannelException;
 
-import com.github.knightliao.vpaas.common.utils.async.future.IInvokeFuture;
+import com.github.knightliao.middle.lang.future.IInvokeFuture;
 import com.github.knightliao.vpaas.lc.server.connect.netty.statistics.service.LcCounterServiceFactory;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.LcHeartbeatMsg;
 

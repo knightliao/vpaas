@@ -2,9 +2,9 @@ package com.github.knightliao.vpaas.lc.client.netty.channel;
 
 import java.util.concurrent.TimeUnit;
 
-import com.github.knightliao.vpaas.common.utils.async.future.IInvokeFuture;
-import com.github.knightliao.vpaas.common.utils.async.future.InvokeFutureFactory;
-import com.github.knightliao.vpaas.common.utils.exceptions.SocketRuntimeException;
+import com.github.knightliao.middle.lang.exceptions.SocketRuntimeException;
+import com.github.knightliao.middle.lang.future.IInvokeFuture;
+import com.github.knightliao.middle.lang.future.InvokeFutureFactory;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.RequestMsg;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.ResponseMsg;

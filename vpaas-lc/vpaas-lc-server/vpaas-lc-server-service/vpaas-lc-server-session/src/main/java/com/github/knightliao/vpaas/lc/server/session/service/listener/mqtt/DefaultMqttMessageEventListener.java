@@ -1,6 +1,6 @@
 package com.github.knightliao.vpaas.lc.server.session.service.listener.mqtt;
 
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcMessageEventListener;
 import com.github.knightliao.vpaas.lc.server.connect.netty.statistics.service.LcCounterServiceFactory;

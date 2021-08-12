@@ -3,7 +3,7 @@ package com.github.knightliao.vpaas.lc.server.connect.support.log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.server.common.common.constants.VpaasServerConstants;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.ChannelKeyUtils;

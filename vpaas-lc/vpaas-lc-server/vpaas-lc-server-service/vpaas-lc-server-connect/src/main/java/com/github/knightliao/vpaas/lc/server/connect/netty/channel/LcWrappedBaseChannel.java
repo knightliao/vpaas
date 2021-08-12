@@ -3,7 +3,7 @@ package com.github.knightliao.vpaas.lc.server.connect.netty.channel;
 import java.net.SocketAddress;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.github.knightliao.vpaas.common.utils.async.future.IInvokeFuture;
+import com.github.knightliao.middle.lang.future.IInvokeFuture;
 
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.Channel;

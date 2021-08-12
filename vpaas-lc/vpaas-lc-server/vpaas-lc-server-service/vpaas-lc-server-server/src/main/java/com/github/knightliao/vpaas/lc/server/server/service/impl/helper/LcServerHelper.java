@@ -3,8 +3,9 @@ package com.github.knightliao.vpaas.lc.server.server.service.impl.helper;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.github.knightliao.vpaas.common.utils.lang.Tuple2;
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.common.utils.net.NettyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
@@ -23,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LcServerHelper {
 
-    public static Tuple2<EventLoopGroup, EventLoopGroup> newCoreThreads(int bossNum, int worNum) {
+    public static ImmutablePair<EventLoopGroup, EventLoopGroup> newCoreThreads(int bossNum, int worNum) {
 
         if (NettyUtils.useEpoll()) {
             return newEpollThreads(bossNum, worNum);
@@ -33,7 +34,7 @@ public class LcServerHelper {
         }
     }
 
-    private static Tuple2<EventLoopGroup, EventLoopGroup> newEpollThreads(int bossNum, int workNum) {
+    private static ImmutablePair<EventLoopGroup, EventLoopGroup> newEpollThreads(int bossNum, int workNum) {
 
         EventLoopGroup bossGroup = new EpollEventLoopGroup(bossNum, new ThreadFactory() {
 
@@ -57,10 +58,10 @@ public class LcServerHelper {
             }
         });
 
-        return new Tuple2<>(bossGroup, workGroup);
+        return new ImmutablePair<>(bossGroup, workGroup);
     }
 
-    private static Tuple2<EventLoopGroup, EventLoopGroup> newNormalThreads(int bossNum, int workNum) {
+    private static ImmutablePair<EventLoopGroup, EventLoopGroup> newNormalThreads(int bossNum, int workNum) {
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(bossNum, new ThreadFactory() {
 
@@ -84,7 +85,7 @@ public class LcServerHelper {
             }
         });
 
-        return new Tuple2<>(bossGroup, workGroup);
+        return new ImmutablePair<>(bossGroup, workGroup);
     }
 
     public static void listenToStatusServer(int statusPort) {

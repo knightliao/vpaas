@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.github.knightliao.vpaas.common.utils.net.IpUtils;
+import com.github.knightliao.middle.utils.net.IpUtils;
 import com.github.knightliao.vpaas.lc.server.common.common.constants.VpaasServerConstants;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;

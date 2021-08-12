@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.github.knightliao.vpaas.common.utils.exceptions.SocketRuntimeException;
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.lang.exceptions.SocketRuntimeException;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.client.netty.client.ILcClient;
 import com.github.knightliao.vpaas.lc.client.support.dto.LcClientParam;
 

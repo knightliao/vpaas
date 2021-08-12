@@ -1,6 +1,6 @@
 package com.github.knightliao.vpaas.lc.server.session.service.listener.json;
 
-import com.github.knightliao.vpaas.common.utils.async.future.IInvokeFuture;
+import com.github.knightliao.middle.lang.future.IInvokeFuture;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcMessageEventListener;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.RequestMsg;

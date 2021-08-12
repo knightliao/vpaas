@@ -2,7 +2,7 @@ package com.github.knightliao.vpaas.lc.server.session.service.listener.mqtt;
 
 import org.apache.commons.lang3.RandomUtils;
 
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 
 import io.netty.buffer.ByteBuf;

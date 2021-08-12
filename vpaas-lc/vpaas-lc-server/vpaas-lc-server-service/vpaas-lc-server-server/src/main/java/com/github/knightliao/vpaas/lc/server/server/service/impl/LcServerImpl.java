@@ -5,8 +5,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.github.knightliao.vpaas.common.utils.lang.Tuple2;
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.common.utils.net.NettyUtils;
 import com.github.knightliao.vpaas.lc.server.connect.dispatch.dispatcher.LcEventDispatcherFactory;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
@@ -79,10 +80,11 @@ public class LcServerImpl extends LcService implements IMyLcServer {
         super.init();
 
         // new core threads
-        Tuple2<EventLoopGroup, EventLoopGroup> tuple2 = LcServerHelper.newCoreThreads(lcServiceParam.getBossCount(),
-                lcServiceParam.getWorkerCount());
-        bossGroup = tuple2.getFirst();
-        workerGroup = tuple2.getSecond();
+        ImmutablePair<EventLoopGroup, EventLoopGroup> immutablePair =
+                LcServerHelper.newCoreThreads(lcServiceParam.getBossCount(),
+                        lcServiceParam.getWorkerCount());
+        bossGroup = immutablePair.getLeft();
+        workerGroup = immutablePair.getRight();
 
         // event dispatcher
         newEventDispatcher();

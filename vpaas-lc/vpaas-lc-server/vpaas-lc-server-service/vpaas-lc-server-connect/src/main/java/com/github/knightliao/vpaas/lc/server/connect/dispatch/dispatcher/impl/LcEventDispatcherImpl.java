@@ -3,7 +3,7 @@ package com.github.knightliao.vpaas.lc.server.connect.dispatch.dispatcher.impl;
 import java.util.EventListener;
 import java.util.concurrent.Future;
 
-import com.github.knightliao.vpaas.common.utils.log.LoggerUtil;
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.server.connect.dispatch.dispatcher.ILcEventDispatcher;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcChannelEventListener;
