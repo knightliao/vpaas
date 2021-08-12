@@ -14,6 +14,8 @@ import io.netty.channel.group.ChannelGroup;
  * 服务核心接口
  *
  * @author knightliao
+ * @email knightliao@gmail.com
+* @email knightliao@gmail.com
  * @date 2021/8/4 14:51
  */
 public interface ILcServer {

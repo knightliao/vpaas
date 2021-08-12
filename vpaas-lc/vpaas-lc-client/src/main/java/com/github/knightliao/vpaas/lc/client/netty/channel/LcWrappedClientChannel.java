@@ -17,6 +17,7 @@ import io.netty.channel.ChannelFutureListener;
  * 重写channel
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 15:13
  */
 public class LcWrappedClientChannel extends LcWrappedChannel {

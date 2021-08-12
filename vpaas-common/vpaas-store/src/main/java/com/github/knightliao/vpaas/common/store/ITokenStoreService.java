@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.common.store;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/12 17:22
  */
 public interface ITokenStoreService {

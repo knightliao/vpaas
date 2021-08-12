@@ -18,6 +18,7 @@ import io.netty.channel.ChannelHandler;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 17:26
  */
 public class ServerNewServiceImpl implements IServerNewService {

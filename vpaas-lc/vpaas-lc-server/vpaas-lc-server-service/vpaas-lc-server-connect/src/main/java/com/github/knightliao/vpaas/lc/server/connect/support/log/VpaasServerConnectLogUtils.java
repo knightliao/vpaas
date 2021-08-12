@@ -15,6 +15,7 @@ import io.netty.channel.Channel;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/6 16:00
  */
 public class VpaasServerConnectLogUtils {

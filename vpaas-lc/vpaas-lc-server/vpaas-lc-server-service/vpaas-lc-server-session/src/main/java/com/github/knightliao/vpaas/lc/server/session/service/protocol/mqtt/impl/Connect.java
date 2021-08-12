@@ -15,6 +15,7 @@ import io.netty.handler.codec.mqtt.MqttConnectMessage;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/11 11:43
  */
 @Service(value = "connect")

@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.lc.server.connect.support.enums;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 17:55
  */
 public enum LcEventBehaviorEnum {

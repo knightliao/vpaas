@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.lc.server.connect.support.dto.msg;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 22:43
  */
 public class LcHeartbeatMsg extends BaseMessage {

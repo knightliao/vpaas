@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  * 消息、channel、异常、处理线程组
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 23:28
  */
 @Slf4j

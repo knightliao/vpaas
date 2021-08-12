@@ -12,6 +12,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  * 一些核心的统计
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/5 21:25
  */
 @ChannelHandler.Sharable

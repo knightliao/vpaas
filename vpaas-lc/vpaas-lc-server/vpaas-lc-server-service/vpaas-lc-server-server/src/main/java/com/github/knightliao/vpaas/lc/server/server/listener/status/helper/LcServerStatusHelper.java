@@ -13,6 +13,7 @@ import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/8 00:23
  */
 public class LcServerStatusHelper {

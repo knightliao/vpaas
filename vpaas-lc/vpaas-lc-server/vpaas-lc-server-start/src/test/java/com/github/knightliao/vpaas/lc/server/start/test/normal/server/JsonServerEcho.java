@@ -7,6 +7,7 @@ import com.github.knightliao.vpaas.lc.server.start.factory.SimpleNewServerFactor
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 17:12
  */
 public class JsonServerEcho {

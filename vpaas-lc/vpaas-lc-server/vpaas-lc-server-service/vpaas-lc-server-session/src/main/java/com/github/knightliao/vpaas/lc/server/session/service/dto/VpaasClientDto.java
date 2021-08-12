@@ -11,6 +11,7 @@ import lombok.experimental.Tolerate;
  * 可参考 https://help.aliyun.com/document_detail/42420.htm
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/12 16:27
  */
 @Data

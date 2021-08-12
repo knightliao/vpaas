@@ -14,6 +14,7 @@ import io.netty.channel.ChannelHandlerContext;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 18:25
  */
 public class StatusMessageListener implements LcMessageEventListener {

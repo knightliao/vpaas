@@ -23,6 +23,7 @@ import lombok.Getter;
  * 重写channel
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 15:13
  */
 public abstract class LcWrappedBaseChannel implements Channel {

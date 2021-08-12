@@ -6,6 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 23:12
  */
 public interface ILcEventDispatcher {

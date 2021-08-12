@@ -7,6 +7,7 @@ import io.netty.util.AttributeKey;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 09:43
  */
 public class ChannelKeyUtils {

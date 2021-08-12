@@ -17,6 +17,7 @@ import io.netty.handler.codec.MessageToMessageDecoder;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 10:34
  */
 @ChannelHandler.Sharable

@@ -9,6 +9,7 @@ import io.netty.channel.ChannelFuture;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/5 21:11
  */
 public interface IMyLcServer extends ILcServer {

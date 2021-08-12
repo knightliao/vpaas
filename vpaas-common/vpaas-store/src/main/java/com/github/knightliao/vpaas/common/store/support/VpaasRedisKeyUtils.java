@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.common.store.support;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/12 11:08
  */
 public class VpaasRedisKeyUtils {

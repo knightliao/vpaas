@@ -21,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  * 事件分发器
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 23:15
  */
 @Slf4j

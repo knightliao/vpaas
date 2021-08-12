@@ -5,6 +5,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 23:14
  */
 public class LcEventDispatcherFactory {

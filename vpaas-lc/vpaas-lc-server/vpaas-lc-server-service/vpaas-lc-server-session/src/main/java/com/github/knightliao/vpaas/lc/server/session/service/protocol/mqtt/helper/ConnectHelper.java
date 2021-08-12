@@ -13,6 +13,7 @@ import io.netty.handler.codec.mqtt.MqttConnectMessage;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/12 17:04
  */
 @Service

@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.lc.server.connect.support.constants;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/9 18:02
  */
 public class ProtocolConstants {

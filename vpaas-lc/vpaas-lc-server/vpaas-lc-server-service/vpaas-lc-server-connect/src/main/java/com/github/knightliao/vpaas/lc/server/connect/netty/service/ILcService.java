@@ -11,6 +11,7 @@ import io.netty.channel.ChannelHandler;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 23:10
  */
 public interface ILcService {

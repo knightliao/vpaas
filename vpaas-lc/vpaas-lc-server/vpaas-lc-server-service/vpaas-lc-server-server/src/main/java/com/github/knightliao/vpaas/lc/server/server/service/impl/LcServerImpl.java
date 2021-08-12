@@ -39,6 +39,7 @@ import lombok.extern.slf4j.Slf4j;
  * 核心server
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/5 21:18
  */
 @Slf4j

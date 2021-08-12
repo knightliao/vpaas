@@ -22,6 +22,7 @@ import io.netty.channel.ChannelFuture;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/8 23:28
  */
 public class MyLcClientImpl implements IMyLcClient {

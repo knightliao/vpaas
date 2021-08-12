@@ -9,6 +9,7 @@ import io.netty.channel.ChannelHandlerContext;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 17:54
  */
 public interface LcChannelEventListener extends EventListener {

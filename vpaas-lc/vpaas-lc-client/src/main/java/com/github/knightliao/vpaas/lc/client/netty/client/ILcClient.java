@@ -12,6 +12,7 @@ import io.netty.channel.ChannelFuture;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/8 17:49
  */
 public interface ILcClient {

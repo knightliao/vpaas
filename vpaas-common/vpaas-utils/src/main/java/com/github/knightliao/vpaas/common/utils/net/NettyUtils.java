@@ -6,6 +6,7 @@ import io.netty.channel.epoll.Epoll;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/5 21:49
  */
 public class NettyUtils {

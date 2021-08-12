@@ -8,6 +8,7 @@ import lombok.Getter;
  * 一些核心统计数据
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 20:18
  */
 @Getter

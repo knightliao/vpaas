@@ -4,6 +4,7 @@ import io.netty.channel.Channel;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/11 11:36
  */
 public interface ProtocolProcessor {

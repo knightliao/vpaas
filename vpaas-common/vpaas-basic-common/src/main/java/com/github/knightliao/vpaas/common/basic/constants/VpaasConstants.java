@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.common.basic.constants;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 10:02
  */
 public class VpaasConstants {

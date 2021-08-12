@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/8 17:50
  */
 @Data

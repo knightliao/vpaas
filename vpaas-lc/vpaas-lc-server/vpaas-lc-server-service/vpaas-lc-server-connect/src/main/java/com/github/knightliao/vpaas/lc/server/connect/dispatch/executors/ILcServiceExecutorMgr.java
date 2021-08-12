@@ -6,6 +6,7 @@ import com.github.knightliao.vpaas.lc.server.connect.support.enums.ExecutorEnum;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/4 23:28
  */
 public interface ILcServiceExecutorMgr {

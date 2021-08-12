@@ -5,6 +5,7 @@ import com.github.knightliao.vpaas.lc.client.service.impl.MyLcClientImpl;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/9 11:40
  */
 public class VpaasClientFactory {

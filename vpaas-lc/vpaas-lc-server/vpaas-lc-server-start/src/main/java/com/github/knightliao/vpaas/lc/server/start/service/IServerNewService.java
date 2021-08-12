@@ -9,6 +9,7 @@ import io.netty.channel.ChannelHandler;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 17:25
  */
 public interface IServerNewService {

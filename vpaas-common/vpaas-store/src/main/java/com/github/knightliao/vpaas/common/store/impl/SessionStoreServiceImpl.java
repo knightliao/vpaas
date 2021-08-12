@@ -14,6 +14,7 @@ import com.github.knightliao.vpaas.common.store.support.VpaasRedisKeyUtils;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/12 10:46
  */
 public class SessionStoreServiceImpl implements ISessionStoreService {

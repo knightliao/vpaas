@@ -8,6 +8,7 @@ import com.github.knightliao.vpaas.lc.server.start.support.dto.ServerOptionsDto;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/7 17:24
  */
 public class SimpleNewServerFactory {

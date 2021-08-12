@@ -8,6 +8,7 @@ import com.github.knightliao.vpaas.common.store.dto.SessionStoreDto;
  * 会话存储服务
  *
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/11 14:49
  */
 public interface ISessionStoreService {

@@ -21,6 +21,7 @@ import io.netty.handler.timeout.IdleStateHandler;
 
 /**
  * @author knightliao
+ * @email knightliao@gmail.com
  * @date 2021/8/8 22:48
  */
 public class LcClientPipeline {
