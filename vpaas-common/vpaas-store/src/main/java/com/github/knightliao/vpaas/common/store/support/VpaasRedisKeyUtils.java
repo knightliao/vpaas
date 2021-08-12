@@ -7,6 +7,11 @@ package com.github.knightliao.vpaas.common.store.support;
 public class VpaasRedisKeyUtils {
 
     //
+    public static String getTokenKey(int brokerId, String clientId) {
+        return String.format("token_%d_%s", brokerId, clientId);
+    }
+
+    //
     public static String getSessionKey(int brokerId, String clientId) {
 
         return String.format("session_%d_%s", brokerId, clientId);
