@@ -13,7 +13,7 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <bom.version>0.0.2</bom.version>
+        <bom.version>0.0.3-SNAPSHOT</bom.version>
 
         <!-- Spring項目配置 -->
         <encoding>UTF-8</encoding>
@@ -44,7 +44,6 @@
     </properties>
 
     <modules>
-        <module>bom</module>
         <module>vpaas-common</module>
         <module>vpaas-lc</module>
     </modules>
@@ -353,6 +352,19 @@
 
     <url>https://github.com/knightliao/vpaas</url>
     <description>.</description>
+
+    <repositories>
+        <repository>
+            <id>oss.sonatype.org-snapshot</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <profiles>
         <profile>
