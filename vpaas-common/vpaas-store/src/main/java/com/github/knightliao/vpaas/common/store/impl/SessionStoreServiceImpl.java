@@ -41,7 +41,8 @@ public class SessionStoreServiceImpl implements ISessionStoreService {
         myRedisService.set(key, expire, sessionStoreDto);
 
         if (sessionStoreKeyDto.getUid() == VpaasConstants.DEFAULT_ERROR_UID) {
-
+            putUser(sessionStoreKeyDto.getBrokerId(), sessionStoreKeyDto.getClientId(),
+                    sessionStoreKeyDto.getUid(), sessionStoreDto);
         }
     }
 
