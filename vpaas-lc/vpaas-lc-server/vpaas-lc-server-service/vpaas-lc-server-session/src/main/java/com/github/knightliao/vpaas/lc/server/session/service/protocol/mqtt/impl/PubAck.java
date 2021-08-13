@@ -2,9 +2,10 @@ package com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.impl
 
 import org.springframework.stereotype.Service;
 
-import com.github.knightliao.vpaas.lc.server.session.service.protocol.ProtocolProcessor;
+import com.github.knightliao.vpaas.lc.server.session.service.protocol.IProtocolProcessor;
 
 import io.netty.channel.Channel;
+import io.netty.handler.codec.mqtt.MqttPubAckMessage;
 
 /**
  * @author knightliao
@@ -12,7 +13,8 @@ import io.netty.channel.Channel;
  * @date 2021/8/13 14:36
  */
 @Service(value = "PubAck")
-public class PubAck implements ProtocolProcessor {
+public class PubAck implements IProtocolProcessor {
+
     @Override
     public void doPre(Channel channel, Object msg) {
 
@@ -30,6 +32,12 @@ public class PubAck implements ProtocolProcessor {
 
     @Override
     public boolean canGo(Object msg) {
-        return false;
+        return msg instanceof MqttPubAckMessage;
+    }
+
+    private void processPubAck(Channel channel, MqttPubAckMessage mqttPubAckMessage) {
+
+        int messaggeId = mqttPubAckMessage.variableHeader().messageId();
+
     }
 }

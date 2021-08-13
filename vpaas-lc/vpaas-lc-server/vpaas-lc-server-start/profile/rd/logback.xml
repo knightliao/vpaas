@@ -5,7 +5,6 @@
     <property name="serverName" value="./log/vpaas-lc-server"/>
     <property name="pattern"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{channelId} %X{EAGLEEYE_TRACE_ID} %X{clientId} %X{uid} [%thread] %-5level %logger{80} - %msg%n"/>
-    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -25,7 +24,6 @@
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>DEBUG</level>
             <onMatch>ACCEPT</onMatch>
-            <onMisMatch>DENY</onMisMatch>
         </filter>
     </appender>
 
@@ -41,7 +39,6 @@
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>INFO</level>
             <onMatch>ACCEPT</onMatch>
-            <onMisMatch>DENY</onMisMatch>
         </filter>
     </appender>
 
@@ -57,7 +54,6 @@
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>WARN</level>
             <onMatch>ACCEPT</onMatch>
-            <onMisMatch>DENY</onMisMatch>
         </filter>
     </appender>
 
@@ -73,7 +69,6 @@
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
             <onMatch>ACCEPT</onMatch>
-            <onMisMatch>DENY</onMisMatch>
         </filter>
     </appender>
 

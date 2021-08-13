@@ -13,6 +13,10 @@ public class VpaasServerConstants {
     // connect 返回值日志
     public final static String LOGGER_CONNECT_RET_LOG = "LOGGER_CONNECT_RET_LOG";
 
+    // session
+    public final static String LOGGER_MQTT_SESSION_OP_LOG = "LOGGER_MQTT_SESSION_OP_LOG";
+    public final static String LOGGER_MQTT_IDLE_TIMEOUT_LOG = "LOGGER_MQTT_IDLE_TIMEOUT_LOG";
+
     // server
     public final static String DEFAULT_SERVER_NAME = "VPAAS_LC_SERVER";
     public final static int DEFAULT_SERVER_ID = 0;

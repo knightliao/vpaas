@@ -10,7 +10,7 @@ import com.github.knightliao.vpaas.common.store.dto.SessionStoreDto;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.ChannelKeyUtils;
 import com.github.knightliao.vpaas.lc.server.session.service.dto.VpaasClientDto;
 import com.github.knightliao.vpaas.lc.server.session.service.dto.VpaasCommonUserNameDto;
-import com.github.knightliao.vpaas.lc.server.session.service.protocol.ProtocolProcessor;
+import com.github.knightliao.vpaas.lc.server.session.service.protocol.IProtocolProcessor;
 import com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.helper.ConnectCheckHelper;
 import com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.helper.ConnectHelper;
 import com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.helper.ConnectLogHelper;
@@ -28,7 +28,7 @@ import io.netty.handler.codec.mqtt.MqttConnectReturnCode;
  * @date 2021/8/11 11:43
  */
 @Service(value = "connect")
-public class Connect implements ProtocolProcessor {
+public class Connect implements IProtocolProcessor {
 
     @Resource
     private ConnectHelper connectHelper;

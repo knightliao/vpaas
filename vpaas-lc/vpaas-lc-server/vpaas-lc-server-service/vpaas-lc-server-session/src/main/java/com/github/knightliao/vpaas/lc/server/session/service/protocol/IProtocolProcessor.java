@@ -7,7 +7,7 @@ import io.netty.channel.Channel;
  * @email knightliao@gmail.com
  * @date 2021/8/11 11:36
  */
-public interface ProtocolProcessor {
+public interface IProtocolProcessor {
 
     void doPre(Channel channel, Object msg);
 
