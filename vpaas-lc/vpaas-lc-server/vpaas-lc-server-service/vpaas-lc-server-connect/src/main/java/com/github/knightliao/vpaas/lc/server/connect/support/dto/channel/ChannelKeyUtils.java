@@ -59,4 +59,12 @@ public class ChannelKeyUtils {
 
         return ret;
     }
+
+    public static void setChannelClientVersionAttribute(Channel channel, String clientId) {
+        channel.attr(AttributeKey.valueOf(CHANNEL_CLIENT_VERSION)).set(clientId);
+    }
+
+    public static String getChannelClientVersionAttribute(Channel channel) {
+        return (String) channel.attr(AttributeKey.valueOf(CHANNEL_CLIENT_VERSION)).get();
+    }
 }

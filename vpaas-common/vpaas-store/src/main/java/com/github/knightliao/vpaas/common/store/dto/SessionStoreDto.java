@@ -61,7 +61,9 @@ public class SessionStoreDto {
     // ping 时的时间
     private long pingTimestamp;
 
-    // 客户端版本
+    // 版本
+    private String accessKey;
+    private String instanceId;
     private String clientVer;
 
     // 加密类型

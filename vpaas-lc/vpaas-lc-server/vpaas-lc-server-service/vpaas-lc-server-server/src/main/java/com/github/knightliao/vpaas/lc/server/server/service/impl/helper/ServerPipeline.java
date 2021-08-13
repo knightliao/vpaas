@@ -14,6 +14,7 @@ import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.json.JsonEnc
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.SocketType;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
@@ -33,7 +34,7 @@ public class ServerPipeline {
     private final static String IDLE_HANDLER_NAME = "idle";
 
     public static ChannelHandler getChildChannelHandler(LcService lcService, ILcEventDispatcher lcEventDispatcher,
-                                                           LcCountHandler lcCountHandler) {
+                                                        LcCountHandler lcCountHandler) {
 
         return new ChannelInitializer<SocketChannel>() {
 
@@ -74,7 +75,7 @@ public class ServerPipeline {
     }
 
     public static ChannelHandler getStatusChildChannelHandler(ILcService lcService,
-                                                                 ILcEventDispatcher lcEventDispatcher) {
+                                                              ILcEventDispatcher lcEventDispatcher) {
 
         return new ChannelInitializer<SocketChannel>() {
 
@@ -132,5 +133,15 @@ public class ServerPipeline {
     private static ChannelInboundHandlerAdapter getHeartbeatHandler() {
 
         return new ServerHeartbeatHandler();
+    }
+
+    public static void replaceIdleHandler(Channel channel, int keepSeconds) {
+
+        if (channel.pipeline().names().contains(IDLE_HANDLER_NAME)) {
+            channel.pipeline().remove(IDLE_HANDLER_NAME);
+        }
+
+        channel.pipeline().addFirst(IDLE_HANDLER_NAME,
+                new IdleStateHandler(0, 0, keepSeconds));
     }
 }
