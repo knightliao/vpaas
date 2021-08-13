@@ -19,8 +19,10 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021/8/13 17:31
  */
 @Slf4j
+@Service
 public class ServerMain implements ApplicationRunner {
 
+    @Resource
     private VpaasMqttMessageEventListener vpaasMqttMessageEventListener;
 
     @Override
