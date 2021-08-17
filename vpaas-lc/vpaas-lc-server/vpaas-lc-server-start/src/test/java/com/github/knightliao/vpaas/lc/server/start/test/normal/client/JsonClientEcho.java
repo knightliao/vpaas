@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.lc.server.start.test.normal.server;
+package com.github.knightliao.vpaas.lc.server.start.test.normal.client;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.knightliao.middle.log.LoggerUtil;
