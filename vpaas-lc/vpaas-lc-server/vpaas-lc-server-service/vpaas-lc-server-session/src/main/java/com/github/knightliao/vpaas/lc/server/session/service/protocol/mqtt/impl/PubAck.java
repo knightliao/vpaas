@@ -28,6 +28,7 @@ public class PubAck implements IProtocolProcessor {
     @Override
     public void process(Channel channel, Object msg) {
 
+        processPubAck(channel, (MqttPubAckMessage) msg);
     }
 
     @Override

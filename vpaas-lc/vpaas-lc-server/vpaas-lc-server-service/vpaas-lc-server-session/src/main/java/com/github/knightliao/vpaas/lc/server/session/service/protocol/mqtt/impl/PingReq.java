@@ -44,6 +44,8 @@ public class PingReq implements IProtocolProcessor {
     @Override
     public void process(Channel channel, Object msg) {
 
+        MqttMessage mqttMessage = (MqttMessage) msg;
+        doPing(channel);
     }
 
     @Override

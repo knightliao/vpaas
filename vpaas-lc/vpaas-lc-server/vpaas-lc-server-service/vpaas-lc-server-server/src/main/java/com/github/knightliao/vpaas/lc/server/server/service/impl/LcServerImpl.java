@@ -23,6 +23,7 @@ import com.github.knightliao.vpaas.lc.server.server.service.impl.helper.ServerPi
 import com.github.knightliao.vpaas.lc.server.server.service.impl.status.StatusLcServerImpl;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelId;
@@ -32,6 +33,11 @@ import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.mqtt.MqttFixedHeader;
+import io.netty.handler.codec.mqtt.MqttMessageFactory;
+import io.netty.handler.codec.mqtt.MqttMessageType;
+import io.netty.handler.codec.mqtt.MqttPublishMessage;
+import io.netty.handler.codec.mqtt.MqttPublishVariableHeader;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -144,7 +150,24 @@ public class LcServerImpl extends LcService implements IMyLcServer {
     @Override
     public ChannelFuture send(LcWrappedChannel channel, String topic, MqttRequest mqttRequest)
             throws InterruptedException {
-        return null;
+
+        MqttPublishMessage publishMessage = (MqttPublishMessage) MqttMessageFactory.newMessage(
+                new MqttFixedHeader(MqttMessageType.PUBLISH,
+                        mqttRequest.isDup(),
+                        mqttRequest.getQps(),
+                        mqttRequest.isRetained(),
+                        0), new MqttPublishVariableHeader(topic, 0),
+                Unpooled.buffer().writeBytes(mqttRequest.getPayload()));
+
+        // retain
+        publishMessage.retain();
+
+        //
+        if (channel.isWritable()) {
+            return channel.writeAndFlush(publishMessage);
+        }
+
+        return channel.writeAndFlush(publishMessage).sync();
     }
 
     @Override

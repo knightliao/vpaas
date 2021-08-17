@@ -11,6 +11,8 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.json.JsonDecoder;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.json.JsonEncoder;
+import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqtt.MqttDecoder;
+import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqtt.MyMqttEncoder;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.SocketType;
 
@@ -116,11 +118,12 @@ public class ServerPipeline {
         } else if (socketType.equals(SocketType.MQTT)) {
 
             //
+            pipeline.addLast("myMqttDecoder", new MqttDecoder());
+            pipeline.addLast("myMqttEncoder", MyMqttEncoder.INSTANCE);
 
         } else if (socketType.equals(SocketType.MQTT_WS)) {
 
             //
-
         }
     }
 

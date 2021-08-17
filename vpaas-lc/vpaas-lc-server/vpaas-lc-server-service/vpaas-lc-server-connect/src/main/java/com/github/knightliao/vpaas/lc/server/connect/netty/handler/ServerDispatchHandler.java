@@ -60,6 +60,8 @@ public class ServerDispatchHandler extends ChannelInboundHandlerAdapter {
             // dispatcher
             eventDispatcher.dispatchMessageEvent(ctx, channel, msg);
 
+            super.channelRead(ctx, msg);
+
         } finally {
 
             //
@@ -69,8 +71,6 @@ public class ServerDispatchHandler extends ChannelInboundHandlerAdapter {
             //
             LcServiceTraceHandler.stopTrace();
         }
-
-        super.channelRead(ctx, msg);
     }
 
     @Override
