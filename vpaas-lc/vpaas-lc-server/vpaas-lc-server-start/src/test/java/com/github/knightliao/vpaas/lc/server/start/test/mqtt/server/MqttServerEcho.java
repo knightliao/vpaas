@@ -6,7 +6,6 @@ import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.server.dto.MqttRequest;
 import com.github.knightliao.vpaas.lc.server.session.service.listener.mqtt.MqttEchoMessageEventListener;
 import com.github.knightliao.vpaas.lc.server.start.factory.SimpleNewServerFactory;
-import com.github.knightliao.vpaas.lc.server.start.support.dto.ServerOptionsDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,10 +19,9 @@ public class MqttServerEcho {
 
     public static void main(String[] args) throws Exception {
 
-        ServerOptionsDto serverOptionsDto = new ServerOptionsDto();
-        serverOptionsDto.setPort(7000);
+        int port = 7000;
 
-        IMyLcServer server = SimpleNewServerFactory.newServer(0);
+        IMyLcServer server = SimpleNewServerFactory.newServer(0, port, port + 1);
         server.addEventListener(new MqttEchoMessageEventListener());
         server.bind();
 

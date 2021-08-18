@@ -16,8 +16,8 @@
     <modules>
         <module>vpaas-utils</module>
         <module>vpaas-basic-common</module>
-        <module>vpaas-rely</module>
         <module>vpaas-store</module>
+        <module>vpaas-rely</module>
     </modules>
 
 </project>

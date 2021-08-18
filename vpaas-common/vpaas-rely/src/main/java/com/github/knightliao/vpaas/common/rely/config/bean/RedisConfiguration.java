@@ -30,16 +30,16 @@ import redis.clients.jedis.JedisCluster;
  * @date 2021/8/13 21:14
  */
 @EnableConfigurationProperties
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:vpaas.properties")
 @Slf4j
 @Configuration
 @EnableCaching
 public class RedisConfiguration {
 
-    @Value("${redis.host}")
+    @Value("${vpaas.redis.host}")
     private String redisHost;
 
-    @Value("${redis.password}")
+    @Value("${vpaas.redis.password}")
     private String redisPassword;
 
     @Bean("jedisCluster")

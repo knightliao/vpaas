@@ -22,6 +22,11 @@
 
         <dependency>
             <groupId>com.github.knightliao.middle</groupId>
+            <artifactId>pack-metrics</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.knightliao.middle</groupId>
             <artifactId>pack-lang</artifactId>
         </dependency>
 

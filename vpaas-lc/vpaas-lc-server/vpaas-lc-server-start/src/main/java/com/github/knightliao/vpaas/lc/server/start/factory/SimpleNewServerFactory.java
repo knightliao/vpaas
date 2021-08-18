@@ -15,12 +15,14 @@ public class SimpleNewServerFactory {
 
     private static IServerNewService serverNewService = new ServerNewServiceImpl();
 
-    public static IMyLcServer newServer(int brokerId) {
+    public static IMyLcServer newServer(int brokerId, int port, int statusPort) {
 
         //
         ServerOptionsDto serverOptionsDto = new ServerOptionsDto();
         serverOptionsDto.setBrokerId(brokerId);
-        serverOptionsDto.setPort(7000);
+        serverOptionsDto.setPort(port);
+        serverOptionsDto.setStatusPort(statusPort);
+        serverOptionsDto.setSocketType(SocketType.MQTT);
 
         //
         IMyLcServer server = (IMyLcServer) serverNewService.newServer(serverOptionsDto);
@@ -28,12 +30,13 @@ public class SimpleNewServerFactory {
         return server;
     }
 
-    public static IMyLcServer newServer(int brokerId, SocketType socketType) {
+    public static IMyLcServer newServer(int brokerId, int port, int statusPort, SocketType socketType) {
 
         //
         ServerOptionsDto serverOptionsDto = new ServerOptionsDto();
         serverOptionsDto.setBrokerId(brokerId);
-        serverOptionsDto.setPort(7000);
+        serverOptionsDto.setPort(port);
+        serverOptionsDto.setStatusPort(statusPort);
         serverOptionsDto.setSocketType(socketType);
 
         //

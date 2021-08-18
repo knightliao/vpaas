@@ -15,7 +15,8 @@ public class JsonServerEcho {
     public static void main(String[] args) throws Exception {
 
         //
-        IMyLcServer myLcServer = SimpleNewServerFactory.newServer(0, SocketType.JSON);
+        int port = 7000;
+        IMyLcServer myLcServer = SimpleNewServerFactory.newServer(0, port, port + 1, SocketType.JSON);
         //
         myLcServer.addEventListener(new JsonEchoMessageEventListener());
 

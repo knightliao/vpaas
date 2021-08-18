@@ -55,7 +55,7 @@ public class MqttEclipseClientTest {
 
                     //sampleClient.publish(topic, message);
 
-                    Thread.sleep(2000);
+                    Thread.sleep(50);
 
                 } catch (Exception ex) {
 

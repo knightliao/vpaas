@@ -13,7 +13,8 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <middle.version>0.0.9-SNAPSHOT</middle.version>
+        <middle.version>0.1.1-SNAPSHOT</middle.version>
+        <star.starter.version>0.0.2-SNAPSHOT</star.starter.version>
 
         <!-- Spring項目配置 -->
         <encoding>UTF-8</encoding>
@@ -31,7 +32,6 @@
         <cglib.version>2.2.2</cglib.version>
         <log4j.version>1.2.16</log4j.version>
         <gson.version>2.5</gson.version>
-        <jackson.version>2.7.0</jackson.version>
         <netty.version>4.1.12.Final</netty.version>
         <aspectj.version>1.8.9</aspectj.version>
         <commons.lang3.version>3.5</commons.lang3.version>
@@ -63,6 +63,12 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
                 <version>${spring.version}</version>
             </dependency>
 
@@ -106,7 +112,19 @@
 
             <dependency>
                 <groupId>com.github.knightliao.middle</groupId>
+                <artifactId>pack-metrics</artifactId>
+                <version>${middle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.knightliao.middle</groupId>
                 <artifactId>pack-idgen</artifactId>
+                <version>${middle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.knightliao.middle</groupId>
+                <artifactId>pack-utils</artifactId>
                 <version>${middle.version}</version>
             </dependency>
 
@@ -151,12 +169,6 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
             </dependency>
 
             <dependency>

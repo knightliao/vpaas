@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.middle.utils.net.IpUtils;
 import com.github.knightliao.vpaas.lc.server.common.common.constants.VpaasServerConstants;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
@@ -15,12 +16,14 @@ import com.github.knightliao.vpaas.lc.server.start.service.IServerNewService;
 import com.github.knightliao.vpaas.lc.server.start.support.dto.ServerOptionsDto;
 
 import io.netty.channel.ChannelHandler;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author knightliao
  * @email knightliao@gmail.com
  * @date 2021/8/7 17:26
  */
+@Slf4j
 public class ServerNewServiceImpl implements IServerNewService {
 
     @Override
@@ -82,6 +85,10 @@ public class ServerNewServiceImpl implements IServerNewService {
         // worker & boss
         service.getLcServiceParam().setWorkerCount(serverOptionsDto.getWorkCount());
         service.getLcServiceParam().setBossCount(serverOptionsDto.getBossCount());
+
+        //
+        LoggerUtil.info(log, "server_socket_type: {0}", serverOptionsDto.getSocketType());
+        LoggerUtil.info(log, "server_broker: {0}", serverOptionsDto.getBrokerId());
 
         //
         return server;

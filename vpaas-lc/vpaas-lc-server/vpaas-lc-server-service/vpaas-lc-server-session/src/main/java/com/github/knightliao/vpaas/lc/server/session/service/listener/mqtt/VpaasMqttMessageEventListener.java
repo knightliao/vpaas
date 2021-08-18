@@ -85,6 +85,28 @@ public class VpaasMqttMessageEventListener implements LcMessageEventListener, Lc
                         mqttProtocolProcess.process(MqttMessageType.CONNECT, channel, msg);
                         break;
 
+                    case PUBLISH:
+                        mqttProtocolProcess.process(MqttMessageType.PUBLISH, channel, msg);
+                        break;
+
+                    case PUBACK:
+                        mqttProtocolProcess.process(MqttMessageType.PUBACK, channel, msg);
+                        break;
+
+                    case SUBSCRIBE:
+                        break;
+
+                    case UNSUBSCRIBE:
+                        break;
+
+                    case PINGREQ:
+                        mqttProtocolProcess.process(MqttMessageType.PINGREQ, channel, msg);
+                        break;
+
+                    case PINGRESP:
+                        mqttProtocolProcess.process(MqttMessageType.PINGRESP, channel, msg);
+                        break;
+
                     default:
                         LoggerUtil.error(log, "Nonsupport server message type of {0}", mqttMessage);
                 }

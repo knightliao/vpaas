@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
 import com.github.knightliao.middle.log.LoggerUtil;
+import com.github.knightliao.vpaas.common.rely.config.bean.VpaasConfig;
 import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.session.service.listener.mqtt.VpaasMqttMessageEventListener;
 
@@ -25,11 +26,18 @@ public class ServerMain implements ApplicationRunner {
     @Resource
     private VpaasMqttMessageEventListener vpaasMqttMessageEventListener;
 
+    @Resource
+    private VpaasConfig vpaasConfig;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
         //
-        IMyLcServer server = SimpleNewServerFactory.newServer(0);
+        IMyLcServer server =
+                SimpleNewServerFactory.newServer(
+                        vpaasConfig.getServerBrokerId(),
+                        vpaasConfig.getServerPort(),
+                        vpaasConfig.getServerStatusPort());
 
         // add listener
         server.addEventListener(vpaasMqttMessageEventListener);
