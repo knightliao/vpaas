@@ -7,7 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
 import com.github.knightliao.middle.log.LoggerUtil;
-import com.github.knightliao.vpaas.common.rely.config.bean.VpaasConfig;
+import com.github.knightliao.vpaas.common.rely.config.VpaasConfig;
 import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 import com.github.knightliao.vpaas.lc.server.session.service.listener.mqtt.VpaasMqttMessageEventListener;
 

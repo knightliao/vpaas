@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.common.rely.config.bean;
+package com.github.knightliao.vpaas.common.rely.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -30,5 +30,8 @@ public class VpaasConfig {
 
     @Value("${vpaas.server.status.port:6001}")
     private int serverStatusPort;
+
+    @Value("${vpaas.server.log.debug:true}")
+    private boolean logDebug;
 
 }
