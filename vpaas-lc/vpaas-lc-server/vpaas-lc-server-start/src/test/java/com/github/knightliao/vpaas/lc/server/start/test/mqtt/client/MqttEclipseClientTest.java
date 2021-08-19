@@ -16,10 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 public class MqttEclipseClientTest {
 
     private final static String clientId = "GID_XXX@@CLientID_123";
+    private final static String userName = "siginType|accessKey|instanceId|clientVer|-1";
 
     public static void main(String[] args) {
 
-        final String broker = "tcp://127.0.0.1:7000";
+        final String broker = "tcp://127.0.0.1:6000";
 
         MemoryPersistence persistence = new MemoryPersistence();
         final String topic = "server/";
@@ -32,6 +33,7 @@ public class MqttEclipseClientTest {
             final MqttConnectOptions connectOptions = new MqttConnectOptions();
             connectOptions.setServerURIs(new String[] {broker});
             connectOptions.setPassword("123456".toCharArray());
+            connectOptions.setUserName(userName);
             connectOptions.setCleanSession(true);
             connectOptions.setKeepAliveInterval(90);
             connectOptions.setAutomaticReconnect(true);
@@ -60,6 +62,7 @@ public class MqttEclipseClientTest {
                 } catch (Exception ex) {
 
                     ex.printStackTrace();
+                    System.exit(0);
                 }
             }
 

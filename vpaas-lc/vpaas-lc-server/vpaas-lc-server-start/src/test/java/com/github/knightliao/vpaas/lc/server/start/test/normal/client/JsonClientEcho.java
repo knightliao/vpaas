@@ -24,7 +24,7 @@ public class JsonClientEcho {
 
         ClientOptions clientOptions = new ClientOptions();
         clientOptions.setSocketType(SocketType.JSON);
-        clientOptions.setServerList("127.0.0.1:7000");
+        clientOptions.setServerList("127.0.0.1:6000");
 
         IMyLcClient lcClient = VpaasClientFactory.getMyLcClientImpl().newClient(clientOptions);
         lcClient.addEventListener(new JsonEchoMessageEventListener());

@@ -19,7 +19,7 @@ public class MqttServerEcho {
 
     public static void main(String[] args) throws Exception {
 
-        int port = 7000;
+        int port = 6000;
 
         IMyLcServer server = SimpleNewServerFactory.newServer(0, port, port + 1);
         server.addEventListener(new MqttEchoMessageEventListener());

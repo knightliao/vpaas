@@ -22,11 +22,11 @@ public class ServerOptionsDto {
     // 是否开启status端口
     private boolean openStatus = true;
 
-    // 统计信息端口 默认 7001
-    private int statusPort = 7001;
+    // 统计信息端口 默认 6001
+    private int statusPort = 6001;
 
-    // 绑定端口，默认 7000
-    private int port = 7000;
+    // 绑定端口，默认 6000
+    private int port = 6000;
 
     // 是否启用 keepAlive
     private boolean keepAlive = true;
