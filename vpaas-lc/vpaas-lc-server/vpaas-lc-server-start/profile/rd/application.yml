@@ -5,7 +5,7 @@ server:
 management:
   server:
     port:
-      8081
+      9011
     ssl:
       enabled: false
   endpoint:

@@ -86,21 +86,21 @@ public class Connect implements IProtocolProcessor {
             }
 
             // check password (token is password)
-            vpaasConnectCommonEnum = connectCheckHelper.checkTokenValid(clientId,
-                    mqttConnectMessage.payload().password());
+            vpaasConnectCommonEnum =
+                    connectCheckHelper.checkTokenValid(clientId, mqttConnectMessage.payload().password());
             if (vpaasConnectCommonEnum != null) {
                 // 校验不通过
                 return;
             }
 
             // quick login
-            ImmutableTriple<SessionStoreDto, SessionStoreDto, VpaasConnectCommonEnum> quickCheck =
-                    connectHelper.quickSessionLogin(
-                            channel, vpaasClientDto, vpaasCommonUserNameDto, mqttConnectMessage);
-            vpaasConnectCommonEnum = quickCheck.getRight();
-            preSession = quickCheck.getMiddle();
-            if (vpaasConnectCommonEnum != null) {
-                // 已经成功 quick login
+            ImmutableTriple<SessionStoreDto, SessionStoreDto, VpaasConnectCommonEnum> quickCheckCheck =
+                    connectHelper.quickSessionLogin(channel, vpaasClientDto, vpaasCommonUserNameDto,
+                            mqttConnectMessage);
+            if (quickCheckCheck != null) {
+                // 原来已经有session，进行 return
+                vpaasConnectCommonEnum = quickCheckCheck.getRight();
+                preSession = quickCheckCheck.getMiddle();
                 return;
             }
 
@@ -108,6 +108,7 @@ public class Connect implements IProtocolProcessor {
             connectHelper.saveToSession(channel, vpaasClientDto, vpaasCommonUserNameDto, mqttConnectMessage);
             connectHelper.setChannelAttribute(channel, clientId, vpaasCommonUserNameDto.getUid(),
                     vpaasCommonUserNameDto.getClientVer());
+            vpaasConnectCommonEnum = VpaasConnectCommonEnum.CONNECT_NEW_OK;
 
         } catch (Exception ex) {
 
