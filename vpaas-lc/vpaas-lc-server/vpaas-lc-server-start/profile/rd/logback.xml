@@ -89,7 +89,20 @@
         </appender>
     </logger>
 
-    <logger name="LOGGER_SESSION_OP_LOG" additivity="false" level="INFO">
+    <logger name="LOGGER_CONNECT_RET_LOG" additivity="false" level="INFO">
+        <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${serverName}/logger_connect_ret_log.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${serverName}/logger_connect_ret_log.log.%d{yyyy-MM-dd}
+                </FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${pattern}</pattern>
+            </layout>
+        </appender>
+    </logger>
+    
+    <logger name="LOGGER_MQTT_SESSION_OP_LOG" additivity="false" level="INFO">
         <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
             <File>${serverName}/logger_session_op_log.log</File>
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">

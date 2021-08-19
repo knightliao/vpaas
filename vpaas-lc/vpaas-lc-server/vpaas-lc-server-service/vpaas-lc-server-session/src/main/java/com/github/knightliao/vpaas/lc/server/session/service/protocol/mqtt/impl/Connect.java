@@ -124,7 +124,7 @@ public class Connect implements IProtocolProcessor {
             doReturn(vpaasConnectCommonEnum, clientId, preUid, channel, vpaasCommonUserNameDto, preSession);
 
             //
-            connectLogHelper.doConnectRealLog(vpaasConnectCommonEnum, clientId, vpaasCommonUserNameDto);
+            connectLogHelper.doConnectRealLog(vpaasConnectCommonEnum, clientId, vpaasCommonUserNameDto, preUid);
         }
 
     }

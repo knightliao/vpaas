@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.middle.metrics.MonitorHelper;
 import com.github.knightliao.vpaas.lc.server.common.common.constants.VpaasServerConstants;
+import com.github.knightliao.vpaas.lc.server.connect.support.utils.LogNeedUtils;
 
+import io.netty.channel.Channel;
 import io.netty.handler.codec.mqtt.MqttMessageType;
 
 /**
@@ -14,14 +16,16 @@ import io.netty.handler.codec.mqtt.MqttMessageType;
  * @email knightliao@gmail.com
  * @date 2021/8/13 11:42
  */
-public class MqttLogUtils {
+public class SessionLogUtils {
 
     private static Logger LOGGER_MQTT_SESSION_OP_LOG =
             LoggerFactory.getLogger((VpaasServerConstants.LOGGER_MQTT_SESSION_OP_LOG));
     private static Logger LOGGER_MQTT_IDLE_TIMEOUT_LOG =
             LoggerFactory.getLogger((VpaasServerConstants.LOGGER_MQTT_IDLE_TIMEOUT_LOG));
 
-    public static void doSessionLog(MqttMessageType mqttMessageType, long cost, boolean status, Object msg) {
+    public static void doSessionLog(Channel channel,
+                                    MqttMessageType mqttMessageType, long cost, boolean status,
+                                    Object msg) {
 
         String type = "";
         if (mqttMessageType != null) {
@@ -30,13 +34,15 @@ public class MqttLogUtils {
 
         LoggerUtil.infoIfNeed(LOGGER_MQTT_SESSION_OP_LOG, "{0} {1} {2}", cost, status, msg);
 
-        MonitorHelper.fastCompassOneKey("MQTT_SESSION_OP_LOG", type, 1, cost, status);
+        MonitorHelper.fastCompassOneKey("SESSION_OP_LOG", type, 1, cost, status);
+
     }
 
-    public static void doIdleTimeoutLog(int expireSeconds, String clientId) {
+    public static void doIdleTimeoutLog(Channel channel, int expireSeconds, String clientId) {
 
+        LogNeedUtils.setupForLog(channel);
         LoggerUtil.infoIfNeed(LOGGER_MQTT_IDLE_TIMEOUT_LOG, "{0} {1}", expireSeconds, clientId);
 
-        MonitorHelper.fastCompassOneKey("MQTT_IDLE_TIMEOUT_LOG", String.valueOf(expireSeconds), 1, 0, true);
+        MonitorHelper.fastCompassOneKey("IDLE_TIMEOUT_LOG", String.valueOf(expireSeconds), 1, 0, true);
     }
 }

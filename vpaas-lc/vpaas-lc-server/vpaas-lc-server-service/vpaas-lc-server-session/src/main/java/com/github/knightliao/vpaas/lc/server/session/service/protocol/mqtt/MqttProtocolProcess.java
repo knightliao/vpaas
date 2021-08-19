@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.session.service.protocol.IProtocolProcessor;
-import com.github.knightliao.vpaas.lc.server.session.service.support.utils.MqttLogUtils;
+import com.github.knightliao.vpaas.lc.server.session.service.support.utils.SessionLogUtils;
 
 import io.netty.channel.Channel;
 import io.netty.handler.codec.mqtt.MqttMessageType;
@@ -89,7 +89,7 @@ public class MqttProtocolProcess {
             long costTime = stopWatch.getTime();
             long brokerId = LcServerContext.getContext().getBrokerId();
 
-            MqttLogUtils.doSessionLog(mqttMessageType, costTime, isSuccess, msg);
+            SessionLogUtils.doSessionLog(channel, mqttMessageType, costTime, isSuccess, msg);
         }
 
     }
