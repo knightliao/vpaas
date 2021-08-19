@@ -5,19 +5,17 @@
     <parent>
         <groupId>com.github.knightliao.vpaas</groupId>
         <artifactId>vpaas</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>vpaas-common</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <modules>
-        <module>vpaas-utils</module>
         <module>vpaas-basic-common</module>
-        <module>vpaas-store</module>
-        <module>vpaas-rely</module>
+        <module>vpaas-utils</module>
     </modules>
 
 </project>

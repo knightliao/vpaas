@@ -5,7 +5,7 @@
 
     <groupId>com.github.knightliao.vpaas</groupId>
     <artifactId>vpaas</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>vpaas</name>
     <packaging>pom</packaging>
 
@@ -13,7 +13,7 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <middle.version>0.1.1-SNAPSHOT</middle.version>
+        <middle.version>0.1.3-SNAPSHOT</middle.version>
         <star.starter.version>0.0.2-SNAPSHOT</star.starter.version>
 
         <!-- Spring項目配置 -->
@@ -107,6 +107,12 @@
             <dependency>
                 <groupId>com.github.knightliao.middle</groupId>
                 <artifactId>pack-log</artifactId>
+                <version>${middle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.knightliao.middle</groupId>
+                <artifactId>pack-idem</artifactId>
                 <version>${middle.version}</version>
             </dependency>
 
@@ -402,7 +408,7 @@
         </repository>
         <repository>
             <id>spring</id>
-            <url>https://maven.aliyun.com/repository/spring</url>
+            <url>https://maven.aliyun.com/repository/public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>

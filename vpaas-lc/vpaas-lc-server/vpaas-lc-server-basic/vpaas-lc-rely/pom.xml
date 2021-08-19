@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.github.knightliao.vpaas</groupId>
-        <artifactId>vpaas-common</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>vpaas-lc-server-basic</artifactId>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vpaas-rely</artifactId>
+    <artifactId>vpaas-lc-rely</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <dependencies>
 
@@ -27,13 +27,18 @@
 
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
-            <artifactId>vpaas-store</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>vpaas-lc-store</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.knightliao.middle</groupId>
             <artifactId>pack-log</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.knightliao.middle</groupId>
+            <artifactId>pack-idem</artifactId>
         </dependency>
 
     </dependencies>

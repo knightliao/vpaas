@@ -5,13 +5,13 @@
     <parent>
         <groupId>com.github.knightliao.vpaas</groupId>
         <artifactId>vpaas-lc-server</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>vpaas-lc-server-start</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <properties>
     </properties>
@@ -49,19 +49,19 @@
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-server</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-session</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.2-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
 

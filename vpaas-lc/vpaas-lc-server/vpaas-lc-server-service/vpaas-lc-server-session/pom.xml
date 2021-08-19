@@ -5,13 +5,13 @@
     <parent>
         <groupId>com.github.knightliao.vpaas</groupId>
         <artifactId>vpaas-lc-server-service</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>vpaas-lc-server-session</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <dependencies>
 
@@ -23,25 +23,25 @@
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-connect</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
-            <artifactId>vpaas-store</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>vpaas-lc-store</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-server</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
-            <artifactId>vpaas-rely</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>vpaas-lc-rely</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
