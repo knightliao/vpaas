@@ -5,12 +5,14 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.github.knightliao.middle.log.LoggerUtil;
+import com.github.knightliao.middle.thread.MyThreadContext;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcChannelEventListener;
 import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcExceptionEventListener;
 import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcMessageEventListener;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.LcEventBehaviorEnum;
 import com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.MqttProtocolProcess;
+import com.github.knightliao.vpaas.lc.server.session.service.support.helper.ServerLogHelper;
 import com.github.knightliao.vpaas.lc.server.session.service.support.helper.VpaasSessionDisconnectHelper;
 
 import io.netty.channel.Channel;
@@ -34,6 +36,9 @@ public class VpaasMqttMessageEventListener implements LcMessageEventListener, Lc
 
     @Resource
     private VpaasSessionDisconnectHelper vpaasSessionDisconnectHelper;
+
+    @Resource
+    private ServerLogHelper serverLogHelper;
 
     @Override
     public LcEventBehaviorEnum channelActive(ChannelHandlerContext ctx, LcWrappedChannel channel) {
@@ -66,6 +71,10 @@ public class VpaasMqttMessageEventListener implements LcMessageEventListener, Lc
         }
 
         try {
+
+            //
+            MyThreadContext.init();
+            serverLogHelper.setUpForLog(channel);
 
             if (msg instanceof MqttMessage) {
 
@@ -120,6 +129,7 @@ public class VpaasMqttMessageEventListener implements LcMessageEventListener, Lc
 
         } finally {
 
+            MyThreadContext.clean();
         }
 
     }

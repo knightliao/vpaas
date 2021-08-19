@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.apache.commons.lang3.time.StopWatch;
 
+import com.github.knightliao.middle.log.LoggerUtil;
+import com.github.knightliao.middle.utils.log.LogControllerTemplate;
 import com.github.knightliao.vpaas.lc.server.connect.dispatch.dispatcher.ILcEventDispatcher;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
@@ -167,6 +169,10 @@ public class ServerDispatchHandler extends ChannelInboundHandlerAdapter {
                         .doConnectLog(DispatcherOpEnum.exceptionCaughtIo, ctx.channel(), stopWatch.getTime());
             } else {
 
+                // 日志可能太多
+                LogControllerTemplate.doFewLog(100, () -> {
+                    LoggerUtil.error(cause, log, "{0}", cause.toString());
+                });
             }
 
             //

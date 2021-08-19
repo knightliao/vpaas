@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.middle.metrics.MonitorHelper;
+import com.github.knightliao.middle.thread.MyThreadContext;
 import com.github.knightliao.vpaas.lc.server.common.common.constants.VpaasServerConstants;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.ChannelKeyUtils;
@@ -27,6 +28,9 @@ public class VpaasServerConnectLogUtils {
 
         try {
 
+            //
+            MyThreadContext.init();
+
             if (channel != null) {
 
                 if (isPrintLog()) {
@@ -35,7 +39,9 @@ public class VpaasServerConnectLogUtils {
                             dispatcherOpEnum.getDesc(),
                             ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
                 } else {
-                    LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
+
+                    setupForLog(channel);
+                    LoggerUtil.infoIfNeed(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
                             getServerType(),
                             dispatcherOpEnum.getDesc(),
                             ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
@@ -46,6 +52,8 @@ public class VpaasServerConnectLogUtils {
             }
 
         } finally {
+
+            MyThreadContext.clean();
 
         }
     }
@@ -64,6 +72,24 @@ public class VpaasServerConnectLogUtils {
 
         ServerLogData serverLogData = LcServerContext.getContext().getServerLogData();
         return serverLogData.getLogAllOpen() >= 1;
+    }
+
+    private static void setupForLog(Channel channel) {
+
+        long uid = ChannelKeyUtils.getChannelClientSessionUidAttribute(channel);
+        String clientId = ChannelKeyUtils.getChannelClientSessionAttribute(channel);
+
+        boolean printLog = false;
+        ServerLogData serverLogData = LcServerContext.getContext().getServerLogData();
+        ;
+        if (serverLogData.getLogClients().contains(clientId)) {
+            printLog = true;
+        }
+        if (serverLogData.getLogUids().contains(uid)) {
+            printLog = true;
+        }
+
+        MyThreadContext.putPrintLogKey(printLog);
     }
 }
 

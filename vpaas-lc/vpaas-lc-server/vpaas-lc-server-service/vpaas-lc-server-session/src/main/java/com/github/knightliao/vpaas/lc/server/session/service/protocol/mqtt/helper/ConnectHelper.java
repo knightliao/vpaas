@@ -23,6 +23,7 @@ import com.github.knightliao.vpaas.lc.server.session.service.dto.VpaasClientDto;
 import com.github.knightliao.vpaas.lc.server.session.service.dto.VpaasCommonUserNameDto;
 import com.github.knightliao.vpaas.lc.server.session.service.support.enums.ClientUserLoginoutEnum;
 import com.github.knightliao.vpaas.lc.server.session.service.support.enums.VpaasConnectCommonEnum;
+import com.github.knightliao.vpaas.lc.server.session.service.support.utils.MqttLogUtils;
 
 import io.netty.channel.Channel;
 import io.netty.handler.codec.mqtt.MqttConnectMessage;
@@ -271,6 +272,9 @@ public class ConnectHelper {
 
             int expire = Math.round(mqttConnectMessage.variableHeader().keepAliveTimeSeconds() * 1.5f);
             ServerPipeline.replaceIdleHandler(channel, expire);
+
+            //
+            MqttLogUtils.doIdleTimeoutLog(expire, ChannelKeyUtils.getChannelClientSessionAttribute(channel));
         }
     }
 }
