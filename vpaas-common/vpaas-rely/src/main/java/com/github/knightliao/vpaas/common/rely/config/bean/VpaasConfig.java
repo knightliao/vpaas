@@ -25,10 +25,10 @@ public class VpaasConfig {
     @Value("${vpaas.server.brokerId:0}")
     private int serverBrokerId;
 
-    @Value("${vpaas.server.port:7000}")
+    @Value("${vpaas.server.port:6000}")
     private int serverPort;
 
-    @Value("${vpaas.server.status.port:7001}")
+    @Value("${vpaas.server.status.port:6001}")
     private int serverStatusPort;
 
 }

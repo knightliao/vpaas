@@ -53,11 +53,15 @@ public class RedisConfiguration {
                 .map(strings -> new HostAndPort(strings[0], Integer.valueOf(strings[1])))
                 .collect(Collectors.toSet());
 
-        LoggerUtil.info(log, "redisCluster ok");
-
-        return isNotEmpty(redisPassword)
+        JedisCluster jedisCluster = isNotEmpty(redisPassword)
                 ? new JedisCluster(nodes, 2000, 200, 5, redisPassword, new MyJedisPoolConfig())
                 : new JedisCluster(nodes, 2000, 200, 5, new MyJedisPoolConfig());
+
+        // just for test
+        jedisCluster.echo("hello");
+
+        LoggerUtil.info(log, "redisCluster ok");
+        return jedisCluster;
     }
 
     public static class MyJedisPoolConfig extends GenericObjectPoolConfig {
