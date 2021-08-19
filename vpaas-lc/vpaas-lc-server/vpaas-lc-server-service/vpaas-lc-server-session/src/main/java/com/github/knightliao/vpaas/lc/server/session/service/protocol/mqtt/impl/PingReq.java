@@ -25,7 +25,7 @@ import io.netty.handler.codec.mqtt.MqttQoS;
  * @email knightliao@gmail.com
  * @date 2021/8/13 14:35
  */
-@Service(value = "PingReq")
+@Service(value = "pingReq")
 public class PingReq implements IProtocolProcessor {
 
     @Resource

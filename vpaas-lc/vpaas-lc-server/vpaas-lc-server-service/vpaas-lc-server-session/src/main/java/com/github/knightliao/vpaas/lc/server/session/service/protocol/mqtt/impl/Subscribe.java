@@ -12,7 +12,7 @@ import io.netty.handler.codec.mqtt.MqttSubscribeMessage;
  * @email knightliao@gmail.com
  * @date 2021/8/13 14:36
  */
-@Service(value = "Subscribe")
+@Service(value = "subscribe")
 public class Subscribe implements IProtocolProcessor {
     @Override
     public void doPre(Channel channel, Object msg) {

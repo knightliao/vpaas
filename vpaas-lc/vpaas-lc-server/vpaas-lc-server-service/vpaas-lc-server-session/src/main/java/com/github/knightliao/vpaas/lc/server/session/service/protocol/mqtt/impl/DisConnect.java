@@ -15,7 +15,7 @@ import io.netty.handler.codec.mqtt.MqttMessage;
  * @email knightliao@gmail.com
  * @date 2021/8/13 14:36
  */
-@Service(value = "DisConnect")
+@Service(value = "disConnect")
 public class DisConnect implements IProtocolProcessor {
     @Override
     public void doPre(Channel channel, Object msg) {

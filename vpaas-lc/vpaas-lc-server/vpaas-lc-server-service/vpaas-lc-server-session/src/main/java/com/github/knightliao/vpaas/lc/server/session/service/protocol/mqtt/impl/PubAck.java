@@ -12,7 +12,7 @@ import io.netty.handler.codec.mqtt.MqttPubAckMessage;
  * @email knightliao@gmail.com
  * @date 2021/8/13 14:36
  */
-@Service(value = "PubAck")
+@Service(value = "pubAck")
 public class PubAck implements IProtocolProcessor {
 
     @Override

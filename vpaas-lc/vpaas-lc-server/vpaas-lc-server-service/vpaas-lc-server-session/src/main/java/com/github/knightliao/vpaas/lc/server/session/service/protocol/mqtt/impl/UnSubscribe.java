@@ -12,7 +12,7 @@ import io.netty.handler.codec.mqtt.MqttUnsubscribeMessage;
  * @email knightliao@gmail.com
  * @date 2021/8/13 14:37
  */
-@Service(value = "UnSubscribe")
+@Service(value = "unSubscribe")
 public class UnSubscribe implements IProtocolProcessor {
     @Override
     public void doPre(Channel channel, Object msg) {

@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  * @email knightliao@gmail.com
  * @date 2021/8/13 14:36
  */
-@Service(value = "Publish")
+@Service(value = "publish")
 @Slf4j
 public class Publish implements IProtocolProcessor {
 

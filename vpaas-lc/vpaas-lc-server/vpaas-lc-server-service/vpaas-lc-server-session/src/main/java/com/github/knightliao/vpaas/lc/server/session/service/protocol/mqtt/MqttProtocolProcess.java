@@ -29,12 +29,28 @@ public class MqttProtocolProcess {
     @Resource
     private IProtocolProcessor connect;
 
+    @Resource
+    private IProtocolProcessor disConnect;
+
+    @Resource
+    private IProtocolProcessor pingReq;
+
+    @Resource
+    private IProtocolProcessor publish;
+
+    @Resource
+    private IProtocolProcessor pubAck;
+
     private Map<MqttMessageType, IProtocolProcessor> protocolProcessMap = new HashMap<>();
 
     @PostConstruct
     public void init() {
 
         protocolProcessMap.put(MqttMessageType.CONNECT, connect);
+        protocolProcessMap.put(MqttMessageType.DISCONNECT, disConnect);
+        protocolProcessMap.put(MqttMessageType.PINGREQ, pingReq);
+        protocolProcessMap.put(MqttMessageType.PUBLISH, publish);
+        protocolProcessMap.put(MqttMessageType.PUBACK, pubAck);
     }
 
     public void process(MqttMessageType mqttMessageType, Channel channel, Object msg) throws Throwable {
