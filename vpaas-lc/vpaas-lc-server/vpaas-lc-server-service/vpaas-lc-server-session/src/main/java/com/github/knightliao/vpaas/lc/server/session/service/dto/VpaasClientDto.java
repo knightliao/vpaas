@@ -3,7 +3,7 @@ package com.github.knightliao.vpaas.lc.server.session.service.dto;
 import org.apache.commons.lang3.StringUtils;
 
 import lombok.Data;
-import lombok.experimental.Builder;
+import lombok.Builder;
 import lombok.experimental.Tolerate;
 
 /**

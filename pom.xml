@@ -35,7 +35,7 @@
         <netty.version>4.1.12.Final</netty.version>
         <aspectj.version>1.8.9</aspectj.version>
         <commons.lang3.version>3.5</commons.lang3.version>
-        <lombok.version>1.14.4</lombok.version>
+        <lombok.version>1.16.20</lombok.version>
 
         <!-- test -->
         <junit.version>4.12</junit.version>

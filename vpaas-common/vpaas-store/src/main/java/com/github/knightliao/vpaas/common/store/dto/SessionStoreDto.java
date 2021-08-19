@@ -1,7 +1,7 @@
 package com.github.knightliao.vpaas.common.store.dto;
 
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.Builder;
 import lombok.experimental.Tolerate;
 
 /**

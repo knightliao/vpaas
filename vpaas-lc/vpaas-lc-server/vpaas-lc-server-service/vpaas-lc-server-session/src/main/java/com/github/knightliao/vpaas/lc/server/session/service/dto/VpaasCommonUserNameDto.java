@@ -10,8 +10,8 @@ import com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.helpe
 import com.github.knightliao.vpaas.lc.server.session.service.support.enums.ClientUserLoginoutEnum;
 
 import io.netty.channel.Channel;
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.Builder;
 import lombok.experimental.Tolerate;
 
 /**
