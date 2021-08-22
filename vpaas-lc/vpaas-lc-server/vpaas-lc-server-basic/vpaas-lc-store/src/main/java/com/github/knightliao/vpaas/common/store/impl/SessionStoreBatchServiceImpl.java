@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.knightliao.middle.lang.constants.PackConstants;
 import com.github.knightliao.middle.redis.IMyRedisBatchService;
 import com.github.knightliao.middle.utils.trans.JsonUtils;
-import com.github.knightliao.vpaas.common.basic.constants.VpaasConstants;
 import com.github.knightliao.vpaas.common.store.ISessionStoreBatchService;
 import com.github.knightliao.vpaas.common.store.dto.SessionStoreDto;
 import com.github.knightliao.vpaas.common.store.support.VpaasRedisKeyUtils;
@@ -68,7 +68,7 @@ public class SessionStoreBatchServiceImpl implements ISessionStoreBatchService {
             }
 
             long uid = sessionStoreKeyDto.getUid();
-            if (uid == VpaasConstants.DEFAULT_ERROR_UID) {
+            if (uid == PackConstants.DEFAULT_ERROR_UID) {
                 continue;
             }
 

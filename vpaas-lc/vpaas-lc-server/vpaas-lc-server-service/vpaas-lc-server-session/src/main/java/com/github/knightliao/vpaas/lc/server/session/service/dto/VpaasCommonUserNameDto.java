@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.github.knightliao.vpaas.common.basic.constants.VpaasConstants;
+import com.github.knightliao.middle.lang.constants.PackConstants;
 import com.github.knightliao.vpaas.lc.server.session.service.protocol.mqtt.helper.ConnectHelper;
 import com.github.knightliao.vpaas.lc.server.session.service.support.enums.ClientUserLoginoutEnum;
 
@@ -64,7 +64,7 @@ public class VpaasCommonUserNameDto {
         try {
             uid = Long.parseLong(strings.get(4));
         } catch (Exception ex) {
-            uid = VpaasConstants.DEFAULT_ERROR_UID;
+            uid = PackConstants.DEFAULT_ERROR_UID;
         }
 
         //

@@ -37,8 +37,11 @@ public class VpaasConfig {
     @Value("${vpaas.server.status.port:6001}")
     private int serverStatusPort;
 
-    @Value("${vpaas.server.log.debug:true}")
-    private boolean logDebug;
+    @Value("${vpaas.server.log.middleware.debug:false}")
+    private boolean logMiddlewareDebug;
+
+    @Value("${vpaas.server.log.web.request.debug:false}")
+    private boolean webRequestLogDebug;
 
     @Value("${vpaas.server.log.clients}")
     private String logClients;

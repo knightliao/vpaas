@@ -7,7 +7,7 @@ import org.apache.commons.lang3.tuple.ImmutableTriple;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import com.github.knightliao.vpaas.common.basic.constants.VpaasConstants;
+import com.github.knightliao.middle.lang.constants.PackConstants;
 import com.github.knightliao.vpaas.common.store.ISessionStoreService;
 import com.github.knightliao.vpaas.common.store.ITokenStoreService;
 import com.github.knightliao.vpaas.common.store.dto.SessionStoreDto;
@@ -188,7 +188,7 @@ public class ConnectHelper {
 
             // session无数据
 
-            if (uid != VpaasConstants.DEFAULT_ERROR_UID) {
+            if (uid != PackConstants.DEFAULT_ERROR_UID) {
 
                 // session 无数据，client, uid同时登录
                 return ClientUserLoginoutEnum.CLIENT_USER_LOGIN;
@@ -201,10 +201,10 @@ public class ConnectHelper {
 
             // session有数据
 
-            if (uid != VpaasConstants.DEFAULT_ERROR_UID) {
+            if (uid != PackConstants.DEFAULT_ERROR_UID) {
 
                 // 用户要登录，session中有，重复登录
-                if (curUid != VpaasConstants.DEFAULT_ERROR_UID) {
+                if (curUid != PackConstants.DEFAULT_ERROR_UID) {
                     if (curUid == uid) {
                         // 本用户登录
                         return ClientUserLoginoutEnum.USER_LOGIN;
@@ -220,7 +220,7 @@ public class ConnectHelper {
             } else {
 
                 // 用户要登出 session中有
-                if (curUid != VpaasConstants.DEFAULT_ERROR_UID) {
+                if (curUid != PackConstants.DEFAULT_ERROR_UID) {
                     return ClientUserLoginoutEnum.USER_LOGOUT;
                 } else {
                     // 用户要登出，session中无用户，重复登出

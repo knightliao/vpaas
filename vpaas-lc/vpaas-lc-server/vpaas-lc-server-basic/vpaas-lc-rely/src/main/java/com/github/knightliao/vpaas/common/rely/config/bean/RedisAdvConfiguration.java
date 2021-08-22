@@ -45,7 +45,7 @@ public class RedisAdvConfiguration {
 
         RedisAop redisAop = new RedisAop();
         redisAop.setMetricStatistic(true);
-        if (vpaasConfig.isLogDebug()) {
+        if (vpaasConfig.isLogMiddlewareDebug()) {
             redisAop.setDebug(true);
         }
 
@@ -57,7 +57,7 @@ public class RedisAdvConfiguration {
 
         IdGenAop idGenAop = new IdGenAop();
         idGenAop.setMetricStatistic(true);
-        if (vpaasConfig.isLogDebug()) {
+        if (vpaasConfig.isLogMiddlewareDebug()) {
             idGenAop.setDebug(true);
         }
 

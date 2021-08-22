@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.github.knightliao.middle.lang.constants.PackConstants;
 import com.github.knightliao.middle.log.LoggerUtil;
-import com.github.knightliao.vpaas.common.basic.constants.VpaasConstants;
 import com.github.knightliao.vpaas.lc.server.common.common.constants.VpaasServerConstants;
 import com.github.knightliao.vpaas.lc.server.session.service.dto.VpaasCommonUserNameDto;
 import com.github.knightliao.vpaas.lc.server.session.service.support.enums.ClientUserLoginoutEnum;
@@ -25,7 +25,7 @@ public class ConnectLogHelper {
                                  VpaasCommonUserNameDto userNameDto, long preUid) {
 
         ClientUserLoginoutEnum clientUserLoginoutEnum = ClientUserLoginoutEnum.NULL;
-        long newUid = VpaasConstants.DEFAULT_ERROR_UID;
+        long newUid = PackConstants.DEFAULT_ERROR_UID;
         if (userNameDto != null) {
             clientUserLoginoutEnum = userNameDto.getClientUserLoginout();
             newUid = userNameDto.getUid();

@@ -1,6 +1,6 @@
 package com.github.knightliao.vpaas.lc.server.connect.support.dto.channel;
 
-import com.github.knightliao.vpaas.common.basic.constants.VpaasConstants;
+import com.github.knightliao.middle.lang.constants.PackConstants;
 
 import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
@@ -40,7 +40,7 @@ public class ChannelKeyUtils {
     public static long getChannelClientSessionUidAttribute(Channel channel) {
         Long ret = (Long) channel.attr(AttributeKey.valueOf(CHANNEL_UID)).get();
         if (ret == null) {
-            return VpaasConstants.DEFAULT_ERROR_VALUE_LONG;
+            return PackConstants.DEFAULT_ERROR_VALUE_LONG;
         }
 
         return ret;
@@ -54,7 +54,7 @@ public class ChannelKeyUtils {
     public static int getChannelClientInactiveAttribute(Channel channel) {
         Integer ret = (Integer) channel.attr(AttributeKey.valueOf(CHANNEL_INACTIVE_TYPE)).get();
         if (ret == null) {
-            return VpaasConstants.DEFAULT_ERROR_VALUE_INT;
+            return PackConstants.DEFAULT_ERROR_VALUE_INT;
         }
 
         return ret;

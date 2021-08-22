@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.github.knightliao.middle.lang.constants.PackConstants;
 import com.github.knightliao.middle.redis.IMyRedisService;
-import com.github.knightliao.vpaas.common.basic.constants.VpaasConstants;
 import com.github.knightliao.vpaas.common.store.ISessionStoreService;
 import com.github.knightliao.vpaas.common.store.dto.SessionStoreDto;
 import com.github.knightliao.vpaas.common.store.support.VpaasRedisKeyUtils;
@@ -41,7 +41,7 @@ public class SessionStoreServiceImpl implements ISessionStoreService {
                 sessionStoreKeyDto.getClientId());
         myRedisService.set(key, expire, sessionStoreDto);
 
-        if (sessionStoreKeyDto.getUid() == VpaasConstants.DEFAULT_ERROR_UID) {
+        if (sessionStoreKeyDto.getUid() == PackConstants.DEFAULT_ERROR_UID) {
             putUser(sessionStoreKeyDto.getBrokerId(), sessionStoreKeyDto.getClientId(),
                     sessionStoreKeyDto.getUid(), sessionStoreDto);
         }
@@ -108,7 +108,7 @@ public class SessionStoreServiceImpl implements ISessionStoreService {
             myRedisService.del(key);
 
             // 删除用户的client数据
-            if (sessionStoreDto.getSessionStoreKeyDto().getUid() != VpaasConstants.DEFAULT_ERROR_UID) {
+            if (sessionStoreDto.getSessionStoreKeyDto().getUid() != PackConstants.DEFAULT_ERROR_UID) {
 
                 key = VpaasRedisKeyUtils.getSessionUidDeviceHashKey(brokerId,
                         sessionStoreDto.getSessionStoreKeyDto().getUid());
