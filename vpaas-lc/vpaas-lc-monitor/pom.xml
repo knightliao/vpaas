@@ -4,19 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.github.knightliao.vpaas</groupId>
-        <artifactId>vpaas</artifactId>
+        <artifactId>vpaas-lc</artifactId>
         <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vpaas-lc</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>vpaas-lc-monitor</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.2-SNAPSHOT</version>
 
-    <modules>
-        <module>vpaas-lc-server</module>
-        <module>vpaas-lc-client</module>
-        <module>vpaas-lc-monitor</module>
-    </modules>
+    <dependencies>
+
+    </dependencies>
 
 </project>
