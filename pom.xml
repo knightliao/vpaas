@@ -13,8 +13,8 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <middle.version>0.1.9-SNAPSHOT</middle.version>
-        <star.starter.version>0.0.2-SNAPSHOT</star.starter.version>
+        <middle.version>0.1.10-SNAPSHOT</middle.version>
+        <star.starter.version>0.0.3-SNAPSHOT</star.starter.version>
 
         <!-- Spring項目配置 -->
         <encoding>UTF-8</encoding>

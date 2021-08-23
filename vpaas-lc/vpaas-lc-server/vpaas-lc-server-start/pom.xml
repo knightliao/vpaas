@@ -36,6 +36,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.knightliao.star</groupId>
+            <artifactId>star-health-starter</artifactId>
+            <version>${star.starter.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>

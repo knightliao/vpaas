@@ -2,8 +2,8 @@ package com.github.knightliao.vpaas.lc.server.start.factory;
 
 import javax.annotation.Resource;
 
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Service;
 
 import com.github.knightliao.middle.log.LoggerUtil;
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class ServerMain implements ApplicationRunner {
+public class ServerMain implements ApplicationListener<ContextRefreshedEvent> {
 
     @Resource
     private VpaasMqttMessageEventListener vpaasMqttMessageEventListener;
@@ -30,7 +30,7 @@ public class ServerMain implements ApplicationRunner {
     private VpaasConfig vpaasConfig;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void onApplicationEvent(ContextRefreshedEvent event) {
 
         //
         IMyLcServer server =
@@ -48,6 +48,5 @@ public class ServerMain implements ApplicationRunner {
 
         //
         LoggerUtil.info(log, "ServerMain start");
-
     }
 }
