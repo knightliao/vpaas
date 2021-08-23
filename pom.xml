@@ -13,7 +13,7 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <middle.version>0.1.8-SNAPSHOT</middle.version>
+        <middle.version>0.1.9-SNAPSHOT</middle.version>
         <star.starter.version>0.0.2-SNAPSHOT</star.starter.version>
 
         <!-- Spring項目配置 -->
