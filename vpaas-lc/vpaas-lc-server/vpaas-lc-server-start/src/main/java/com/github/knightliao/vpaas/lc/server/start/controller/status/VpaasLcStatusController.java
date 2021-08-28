@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.knightliao.middle.api.core.dto.MyBaseRequest;
 import com.github.knightliao.middle.api.core.dto.MyBaseResponse;
-import com.github.knightliao.middle.api.support.aop.QpsAnnotation;
+import com.github.knightliao.middle.web.aop.QpsAnnotation;
 import com.github.knightliao.vpaas.api.web.request.VpaasOfflineRequest;
 import com.github.knightliao.vpaas.api.web.response.VpaasOfflineResponse;
 import com.github.knightliao.vpaas.lc.server.router.facade.VpaasStatusOpFacade;
@@ -32,7 +31,7 @@ public class VpaasLcStatusController {
 
     @QpsAnnotation(printParam = true)
     @RequestMapping(value = "/offline")
-    public MyBaseResponse<VpaasOfflineResponse> offline(VpaasOfflineRequest vpaasOfflineRequest){
+    public MyBaseResponse<VpaasOfflineResponse> offline(VpaasOfflineRequest vpaasOfflineRequest) {
 
         return vpaasStatusOpFacade.offline(vpaasOfflineRequest);
     }

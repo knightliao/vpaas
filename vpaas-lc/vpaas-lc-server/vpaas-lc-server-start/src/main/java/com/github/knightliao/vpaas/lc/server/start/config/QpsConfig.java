@@ -6,9 +6,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.github.knightliao.middle.api.support.aop.QpsInterceptor;
 import com.github.knightliao.middle.lang.callback.IMyMethodCallback;
-import com.github.knightliao.middle.thread.MyThreadContext;
+import com.github.knightliao.middle.web.aop.QpsInterceptor;
 import com.github.knightliao.vpaas.common.rely.config.VpaasConfig;
 import com.github.knightliao.vpaas.lc.server.start.support.utils.RequestAopUtils;
 
@@ -33,18 +32,8 @@ public class QpsConfig {
         @Override
         public void preDo(ProceedingJoinPoint joinPoint) {
 
-            try {
-                //
-                MyThreadContext.init();
-
-                //
-                RequestAopUtils.doLogConfig(joinPoint,
-                        vpaasConfig.isWebRequestLogDebug(), vpaasConfig.getLogUidSet(), vpaasConfig.getLogClientSet());
-
-            } finally {
-
-                MyThreadContext.clean();
-            }
+            RequestAopUtils.doLogConfig(joinPoint,
+                    vpaasConfig.isWebRequestLogDebug(), vpaasConfig.getLogUidSet(), vpaasConfig.getLogClientSet());
         }
 
         @Override

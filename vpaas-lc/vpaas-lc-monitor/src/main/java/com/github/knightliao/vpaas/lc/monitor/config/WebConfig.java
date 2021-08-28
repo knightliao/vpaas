@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.lc.server.start.config;
+package com.github.knightliao.vpaas.lc.monitor.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,18 +8,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.knightliao.middle.web.filter.HttpServletRequestFilter;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author knightliao
  * @email knightliao@gmail.com
- * @date 2021/8/18 10:09
+ * @date 2021/8/28 17:41
  */
+@Slf4j
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
 
@@ -63,6 +69,23 @@ public class WebConfig extends WebMvcConfigurationSupport {
         registrationBean.setUrlPatterns(urlList);
 
         return registrationBean;
+    }
+
+    @Bean
+    public ViewResolver getViewResolver() {
+
+        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setCache(false);
+        resolver.setSuffix(".ftl");
+        resolver.setContentType("text/html;charset=UTF-8");
+        return resolver;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+        log.info("配置静态资源所在目录");
+        registry.addResourceHandler("/vpaas/static/**").addResourceLocations("classpath:/vpaas/static/");
     }
 
 }

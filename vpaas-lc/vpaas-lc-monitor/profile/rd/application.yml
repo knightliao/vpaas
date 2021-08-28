@@ -1,3 +1,18 @@
+spring:
+  freemarker:
+    template-loader-path: classpath:/web/views, claaspath:src/main/resources/web/views/
+    cache: false
+    settings:
+      template_update_delay: 0
+      number_format: 0.##
+      apiBuiltinEnabled: true
+      urlEscapingCharset: UTF-8
+      templateExceptionHandler: htmlDebug
+      incompatible_improvements: 2.3.26
+  resources:
+    static-locations: classpath:/vpaas/static/
+  mvc:
+    static-path-pattern: /vpas/static/**
 
 server:
   port: 9020
