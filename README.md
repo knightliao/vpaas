@@ -14,6 +14,7 @@ an another long-connection(lc) platform
     - vpaas-lc-client 长连接客户端代码
     - vpaas-lc-server 长连接服务端代码
 - vpaas-demos         demos & benchmark
+  - vpaas-lc-client-benchmark   长连接客户端模拟 demo & benchamark 
 - vpaas-osb(online service bus) 长连接在线服务总线（包括消息推送、消息回执）
 - vpaas-tui                     推送服务（包括在线(有序/无序)、离线、超高并发度等）
 - vpaas-monitor                 vpaas监控&管理
