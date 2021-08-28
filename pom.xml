@@ -47,6 +47,8 @@
         <module>vpaas-common</module>
         <module>vpaas-lc</module>
         <module>vpaas-lc-demos</module>
+        <module>vpaas-osb</module>
+        <module>vpaas-tui</module>
         <module>vpaas-monitor</module>
     </modules>
 

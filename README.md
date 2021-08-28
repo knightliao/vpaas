@@ -9,9 +9,11 @@ an another long-connection(lc) platform
 
 ### 代码目录
 
-- vpaas-lc 长连接服务
-    - vpaas-lc-client 客户端代码
-    - vpaas-lc-server 服务端代码
-- vpaas-common 一些基础类
-- vpaas-lc-demos 用于长连接的demo和压测
-- vpaas-monitor 服务端监控&管理
+- vpaas-common        共用的一些基础类
+- vpaas-lc            长连接服务
+    - vpaas-lc-client 长连接客户端代码
+    - vpaas-lc-server 长连接服务端代码
+- vpaas-lc-demos      长连接的demo和压测
+- vpaas-osb(online service bus) 长连接在线服务总线（包括消息推送、消息回执）
+- vpaas-tui                     推送服务（包括在线(有序/无序)、离线、超高并发度等）
+- vpaas-monitor                 vpaas监控&管理
