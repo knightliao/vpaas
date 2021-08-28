@@ -13,4 +13,5 @@ an another long-connection(lc) platform
     - vpaas-lc-client 客户端代码
     - vpaas-lc-server 服务端代码
 - vpaas-common 一些基础类
+- vpaas-lc-demos 用于长连接的demo和压测
 - vpaas-monitor 服务端监控&管理
