@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.lc.monitor.controller.index;
+package com.github.knightliao.vpaas.monitor.controller.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

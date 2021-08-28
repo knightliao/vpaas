@@ -16,7 +16,6 @@
     <modules>
         <module>vpaas-lc-server</module>
         <module>vpaas-lc-client</module>
-        <module>vpaas-lc-monitor</module>
     </modules>
 
 </project>

@@ -101,7 +101,7 @@
             </layout>
         </appender>
     </logger>
-    
+
     <logger name="LOGGER_MQTT_SESSION_OP_LOG" additivity="false" level="INFO">
         <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
             <File>${serverName}/logger_session_op_log.log</File>
@@ -140,15 +140,20 @@
     </appender>
 
     <logger name="RedisMetric" additivity="false" level="INFO">
-        <appender-ref ref="MY_METRICS" />
+        <appender-ref ref="MY_METRICS"/>
+    </logger>
+
+    <logger name="com.github.knightliao.middle.http.common.utils.ConnectionMonitorUtils" additivity="false"
+            level="DEBUG">
+        <appender-ref ref="MY_METRICS"/>
     </logger>
 
     <logger name="MIDDLE_REDIS_LOG" additivity="false" level="INFO">
-        <appender-ref ref="MY_METRICS" />
+        <appender-ref ref="MY_METRICS"/>
     </logger>
 
     <logger name="MIDDLE_IDGEN_LOG" additivity="false" level="INFO">
-        <appender-ref ref="MY_METRICS" />
+        <appender-ref ref="MY_METRICS"/>
     </logger>
 
     <logger name="LOGGER_CONNECT_CLIENT_OP_LOG" additivity="false" level="INFO">

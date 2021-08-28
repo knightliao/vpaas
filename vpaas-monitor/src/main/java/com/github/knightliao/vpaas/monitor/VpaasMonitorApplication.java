@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.lc.monitor;
+package com.github.knightliao.vpaas.monitor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

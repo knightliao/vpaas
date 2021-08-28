@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.lc.monitor.config;
+package com.github.knightliao.vpaas.monitor.config;
 
 import java.util.ArrayList;
 import java.util.List;

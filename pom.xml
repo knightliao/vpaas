@@ -46,6 +46,7 @@
     <modules>
         <module>vpaas-common</module>
         <module>vpaas-lc</module>
+        <module>vpaas-monitor</module>
     </modules>
 
     <dependencies>
