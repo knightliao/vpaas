@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vpaas-lc-demos</artifactId>
+    <artifactId>vpaas-demos</artifactId>
     <packaging>pom</packaging>
     <version>0.0.2-SNAPSHOT</version>
 
@@ -17,7 +17,7 @@
     </properties>
 
     <modules>
-        <module>vpaas-lc-client-demo</module>
+        <module>vpaas-lc-client-benchmark</module>
     </modules>
 
     <dependencies>
