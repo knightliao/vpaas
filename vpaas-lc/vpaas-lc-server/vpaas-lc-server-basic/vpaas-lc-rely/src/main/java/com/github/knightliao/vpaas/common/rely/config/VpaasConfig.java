@@ -28,25 +28,25 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 public class VpaasConfig {
 
-    @Value("${vpaas.server.brokerId:0}")
+    @Value("${vpaas.lc.server.brokerId:0}")
     private int serverBrokerId;
 
-    @Value("${vpaas.server.port:6000}")
+    @Value("${vpaas.lc.server.port:6000}")
     private int serverPort;
 
-    @Value("${vpaas.server.status.port:6001}")
+    @Value("${vpaas.lc.server.status.port:6001}")
     private int serverStatusPort;
 
-    @Value("${vpaas.server.log.middleware.debug:false}")
+    @Value("${vpaas.lc.server.log.middleware.debug:false}")
     private boolean logMiddlewareDebug;
 
-    @Value("${vpaas.server.log.web.request.debug:false}")
+    @Value("${vpaas.lc.server.log.web.request.debug:false}")
     private boolean webRequestLogDebug;
 
-    @Value("${vpaas.server.log.clients}")
+    @Value("${vpaas.lc.server.log.clients}")
     private String logClients;
 
-    @Value("${vpaas.server.log.uids")
+    @Value("${vpaas.lc.server.log.uids")
     private String logUids;
 
     public Set<String> getLogClientSet() {

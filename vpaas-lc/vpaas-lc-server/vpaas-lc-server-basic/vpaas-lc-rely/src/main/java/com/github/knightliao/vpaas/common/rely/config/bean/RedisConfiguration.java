@@ -36,10 +36,10 @@ import redis.clients.jedis.JedisCluster;
 @EnableCaching
 public class RedisConfiguration {
 
-    @Value("${vpaas.redis.host}")
+    @Value("${vpaas.lc.redis.host}")
     private String redisHost;
 
-    @Value("${vpaas.redis.password}")
+    @Value("${vpaas.lc.redis.password}")
     private String redisPassword;
 
     @Bean("jedisCluster")

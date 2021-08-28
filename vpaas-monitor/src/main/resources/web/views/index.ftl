@@ -16,8 +16,8 @@
             <li>
                 <span>长连接: 瞬时数据</span>
                 <ul>
-                    <li>用户在线状态查询（瞬时）</li>
-                    <li>设备在线状态查询（瞬时）</li>
+                    <li><a href="/vpaas-monitor/lc/status?uid=">用户在线状态查询（瞬时）</a></li>
+                    <li><a href="/vpaas-monitor/lc/status?clientId=">设备在线状态查询（瞬时）</a></li>
                 </ul>
             </li>
 
