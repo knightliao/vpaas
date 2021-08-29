@@ -31,7 +31,7 @@ public class VpaasClientDemoEclipse {
                     ClientDemoContext.builder().clientId(clientId)
                             .uid(uid)
                             // 10秒一次心跳
-                            .keepAliveTimeoutSecond(10)
+                            .keepAliveTimeoutSecond(30)
                             .clientRunEnum(ClientRunEnum.SINGLE).build();
 
             ClientSimulationService clientSimulationService = new ClientSimulationEclipseImpl(clientDemoContext,

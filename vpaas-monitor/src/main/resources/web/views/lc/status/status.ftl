@@ -18,6 +18,17 @@
         </div>
     </div>
 
+    <h3>User-status:</h3>
+    <div class="entries">
+        <div class="cell item">
+            <#list sessionStoreDtoListUid as item>
+                <tr width="auto" valign="middle">
+                    <div>${item}</div>
+                </tr>
+            </#list>
+        </div>
+    </div>
+
 </#macro>
 
 <@display_page />

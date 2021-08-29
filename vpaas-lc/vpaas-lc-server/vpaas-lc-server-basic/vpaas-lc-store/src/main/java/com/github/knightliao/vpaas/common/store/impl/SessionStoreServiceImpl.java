@@ -41,7 +41,7 @@ public class SessionStoreServiceImpl implements ISessionStoreService {
                 sessionStoreKeyDto.getClientId());
         myRedisService.set(key, expire, sessionStoreDto);
 
-        if (sessionStoreKeyDto.getUid() == PackConstants.DEFAULT_ERROR_UID) {
+        if (sessionStoreKeyDto.getUid() != PackConstants.DEFAULT_ERROR_UID) {
             putUser(sessionStoreKeyDto.getBrokerId(), sessionStoreKeyDto.getClientId(),
                     sessionStoreKeyDto.getUid(), sessionStoreDto);
         }
