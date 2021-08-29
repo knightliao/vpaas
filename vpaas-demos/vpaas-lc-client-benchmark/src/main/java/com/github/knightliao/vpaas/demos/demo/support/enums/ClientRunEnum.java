@@ -8,7 +8,7 @@ import lombok.Getter;
  * @date 2021/8/29 01:45
  */
 @Getter
-public enum ClientRunEnums {
+public enum ClientRunEnum {
 
     SINGLE("SINGLE", 0),
     MESS("MESS", 1);
@@ -16,13 +16,13 @@ public enum ClientRunEnums {
     private final String desc;
     private final int value;
 
-    ClientRunEnums(String desc, int value) {
+    ClientRunEnum(String desc, int value) {
         this.desc = desc;
         this.value = value;
     }
 
-    public static ClientRunEnums getByValue(Integer input) {
-        for (ClientRunEnums value : ClientRunEnums.values()) {
+    public static ClientRunEnum getByValue(Integer input) {
+        for (ClientRunEnum value : ClientRunEnum.values()) {
             if (value.getValue() == input) {
                 return value;
             }

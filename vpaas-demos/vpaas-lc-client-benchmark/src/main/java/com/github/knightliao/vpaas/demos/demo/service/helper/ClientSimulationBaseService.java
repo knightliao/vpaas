@@ -1,6 +1,8 @@
 package com.github.knightliao.vpaas.demos.demo.service.helper;
 
-import com.github.knightliao.vpaas.demos.demo.support.enums.ClientRunEnums;
+import com.github.knightliao.middle.lang.constants.PackConstants;
+import com.github.knightliao.vpaas.demos.demo.support.dto.ClientDemoContext;
+import com.github.knightliao.vpaas.demos.demo.support.enums.ClientRunEnum;
 
 /**
  * @author knightliao
@@ -9,7 +11,26 @@ import com.github.knightliao.vpaas.demos.demo.support.enums.ClientRunEnums;
  */
 public class ClientSimulationBaseService {
 
-    protected static String USER_NAME_FORMAT = "siginType|accessKey|instanceId|clientVer|-1";
+    protected static String USER_NAME_FORMAT = "siginType|accessKey|instanceId|clientVer|%d";
     protected static int CONNECT_TIMEOUT_MS = 5000;
-    protected ClientRunEnums clientRunEnums;
+    protected ClientRunEnum clientRunEnum;
+
+    protected Long DEFAULT_UID;
+    protected ClientDemoContext clientDemoContext;
+    protected String currentToken = "";
+
+    public ClientSimulationBaseService(ClientDemoContext clientDemoContext) {
+        this.clientDemoContext = clientDemoContext;
+        this.DEFAULT_UID = clientDemoContext.getUid();
+        this.clientRunEnum = clientDemoContext.getClientRunEnum();
+    }
+
+    protected String fetchConnectUserName() {
+
+        if (clientDemoContext.getUid() != null && clientDemoContext.getUid() != PackConstants.DEFAULT_ERROR_UID) {
+            return String.format(USER_NAME_FORMAT, clientDemoContext.getUid());
+        }
+
+        return String.format(USER_NAME_FORMAT, -1);
+    }
 }

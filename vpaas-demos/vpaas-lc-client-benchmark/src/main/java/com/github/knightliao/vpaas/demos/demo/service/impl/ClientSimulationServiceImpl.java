@@ -4,6 +4,7 @@ import java.net.SocketAddress;
 
 import com.github.knightliao.vpaas.demos.demo.service.ClientSimulationService;
 import com.github.knightliao.vpaas.demos.demo.service.helper.ClientSimulationBaseService;
+import com.github.knightliao.vpaas.demos.demo.support.dto.ClientDemoContext;
 import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChannel;
 
 /**
@@ -12,6 +13,11 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChan
  * @date 2021/8/29 01:43
  */
 public class ClientSimulationServiceImpl extends ClientSimulationBaseService implements ClientSimulationService {
+
+    public ClientSimulationServiceImpl(
+            ClientDemoContext clientDemoContext) {
+        super(clientDemoContext);
+    }
 
     @Override
     public LcWrappedChannel getChannel() {
