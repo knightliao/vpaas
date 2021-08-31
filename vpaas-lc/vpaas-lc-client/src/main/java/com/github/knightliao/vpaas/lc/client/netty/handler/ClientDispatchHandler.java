@@ -10,7 +10,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.channel.LcWrappedChan
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.DispatcherOpEnum;
 import com.github.knightliao.vpaas.lc.server.connect.support.log.VpaasServerConnectLogUtils;
-import com.github.knightliao.vpaas.lc.server.connect.support.utils.LcServiceTraceHandler;
+import com.github.knightliao.vpaas.lc.server.connect.support.utils.LcServiceTraceHelper;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -47,7 +47,7 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(ctx.channel());
+            LcServiceTraceHelper.startTraceAndSession(ctx.channel());
 
             LcWrappedChannel channel = (LcWrappedChannel) ((IBaseClient) lcService).getChannel();
             eventDispatcher.dispatchMessageEvent(ctx, channel, msg);
@@ -59,7 +59,7 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
                     .doConnectLog(DispatcherOpEnum.channelRead, ctx.channel(), stopWatch.getTime());
 
             //
-            LcServiceTraceHandler.stopTrace();
+            LcServiceTraceHelper.stopTrace();
         }
     }
 
@@ -72,7 +72,7 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(ctx.channel());
+            LcServiceTraceHelper.startTraceAndSession(ctx.channel());
 
             LcWrappedChannel channel = (LcWrappedChannel) ((IBaseClient) lcService).getChannel();
             if (channel == null) {
@@ -87,7 +87,7 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
                     .doConnectLog(DispatcherOpEnum.channelActive, ctx.channel(), stopWatch.getTime());
 
             //
-            LcServiceTraceHandler.stopTrace();
+            LcServiceTraceHelper.stopTrace();
         }
     }
 
@@ -108,8 +108,8 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
                     .doConnectLog(DispatcherOpEnum.channelInActive, ctx.channel(), stopWatch.getTime());
 
             //
-            LcServiceTraceHandler.stopTrace();
-            LcServiceTraceHandler.clearChannelSession();
+            LcServiceTraceHelper.stopTrace();
+            LcServiceTraceHelper.clearChannelSession();
         }
     }
 
@@ -122,7 +122,7 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(ctx.channel());
+            LcServiceTraceHelper.startTraceAndSession(ctx.channel());
 
             LcWrappedChannel channel = (LcWrappedChannel) ((IBaseClient) lcService).getChannel();
             if (channel == null) {
@@ -143,8 +143,8 @@ public class ClientDispatchHandler extends ChannelInboundHandlerAdapter {
                     .doConnectLog(DispatcherOpEnum.exceptionCaught, ctx.channel(), stopWatch.getTime());
 
             //
-            LcServiceTraceHandler.stopTrace();
-            LcServiceTraceHandler.clearChannelSession();
+            LcServiceTraceHelper.stopTrace();
+            LcServiceTraceHelper.clearChannelSession();
         }
     }
 

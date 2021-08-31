@@ -10,3 +10,4 @@
 /vpaas-lc/vpaas-lc-server/vpaas-lc-server-start/dependency-reduced-pom.xml
 *.iml
 /vpaas-monitor/dependency-reduced-pom.xml
+/vpaas-demos/vpaas-lc-client-benchmark/dependency-reduced-pom.xml

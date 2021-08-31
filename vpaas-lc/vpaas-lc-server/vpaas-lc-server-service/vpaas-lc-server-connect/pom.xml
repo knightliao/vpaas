@@ -58,6 +58,11 @@
             <artifactId>pack-utils</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.knightliao.middle</groupId>
+            <artifactId>pack-trace</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

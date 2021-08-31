@@ -98,6 +98,17 @@
             <version>1.2.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.knightliao.vpaas</groupId>
+            <artifactId>vpaas-lc-client</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

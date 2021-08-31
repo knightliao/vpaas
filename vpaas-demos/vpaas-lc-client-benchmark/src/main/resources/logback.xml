@@ -4,7 +4,7 @@
 
     <property name="serverName" value="./log/vpaas-client-demo"/>
     <property name="pattern"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{channelId} %X{traceId} %X{clientId} %X{uid} [%thread] %-5level %logger{80} - %msg%n"/>
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{channelId} %X{reqId} %X{traceId} %X{clientId} %X{uid} [%thread] %-5level %logger{80} - %msg%n"/>
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

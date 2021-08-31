@@ -12,7 +12,7 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.listener.LcMessageEve
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.ExecutorEnum;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.LcEventBehaviorEnum;
-import com.github.knightliao.vpaas.lc.server.connect.support.utils.LcServiceTraceHandler;
+import com.github.knightliao.vpaas.lc.server.connect.support.utils.LcServiceTraceHelper;
 
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
@@ -113,7 +113,7 @@ public class LcEventDispatcherImpl implements ILcEventDispatcher {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(channel);
+            LcServiceTraceHelper.startTraceAndSession(channel);
 
             for (EventListener listener : lcService.getEventListeners()) {
 
@@ -141,7 +141,7 @@ public class LcEventDispatcherImpl implements ILcEventDispatcher {
 
         } finally {
 
-            LcServiceTraceHandler.stopTrace();
+            LcServiceTraceHelper.stopTrace();
         }
     }
 
@@ -155,7 +155,7 @@ public class LcEventDispatcherImpl implements ILcEventDispatcher {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(channel);
+            LcServiceTraceHelper.startTraceAndSession(channel);
 
             for (EventListener listener : lcService.getEventListeners()) {
                 if (listener instanceof LcMessageEventListener) {
@@ -176,7 +176,7 @@ public class LcEventDispatcherImpl implements ILcEventDispatcher {
 
         } finally {
 
-            LcServiceTraceHandler.stopTrace();
+            LcServiceTraceHelper.stopTrace();
         }
     }
 
@@ -190,7 +190,7 @@ public class LcEventDispatcherImpl implements ILcEventDispatcher {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(channel);
+            LcServiceTraceHelper.startTraceAndSession(channel);
 
             for (EventListener listener : lcService.getEventListeners()) {
                 if (listener instanceof LcExceptionEventListener) {
@@ -211,7 +211,7 @@ public class LcEventDispatcherImpl implements ILcEventDispatcher {
 
         } finally {
 
-            LcServiceTraceHandler.stopTrace();
+            LcServiceTraceHelper.stopTrace();
         }
     }
 

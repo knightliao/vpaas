@@ -2,6 +2,7 @@ package com.github.knightliao.vpaas.lc.server.connect.support.utils;
 
 import org.slf4j.MDC;
 
+import com.github.knightliao.middle.trace.MyTraceUtils;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.ChannelKeyUtils;
 
 import io.netty.channel.Channel;
@@ -13,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021/8/5 00:08
  */
 @Slf4j
-public class LcServiceTraceHandler {
+public class LcServiceTraceHelper {
 
     private final static String CHANNEL_ID = "channelId";
     private final static String CLIENT_ID = "clientId";
@@ -25,10 +26,16 @@ public class LcServiceTraceHandler {
         fromChannelSession(channel);
 
         // get trace
+        newChannelRequest();
     }
 
     public static void stopTrace() {
 
+    }
+
+    private static void newChannelRequest(){
+
+        MyTraceUtils.newTrace();
     }
 
     public static void clearChannelSession() {

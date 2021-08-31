@@ -7,7 +7,7 @@ import com.github.knightliao.vpaas.lc.server.connect.support.dto.channel.Channel
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.msg.LcHeartbeatMsg;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.DispatcherOpEnum;
 import com.github.knightliao.vpaas.lc.server.connect.support.log.VpaasServerConnectLogUtils;
-import com.github.knightliao.vpaas.lc.server.connect.support.utils.LcServiceTraceHandler;
+import com.github.knightliao.vpaas.lc.server.connect.support.utils.LcServiceTraceHelper;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -32,7 +32,7 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(ctx.channel());
+            LcServiceTraceHelper.startTraceAndSession(ctx.channel());
 
             if (evt instanceof IdleStateHandler) {
 
@@ -69,7 +69,7 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
         } finally {
 
             //
-            LcServiceTraceHandler.stopTrace();
+            LcServiceTraceHelper.stopTrace();
         }
 
     }
@@ -83,7 +83,7 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
         try {
 
             //
-            LcServiceTraceHandler.startTraceAndSession(ctx.channel());
+            LcServiceTraceHelper.startTraceAndSession(ctx.channel());
 
             if (msg instanceof LcHeartbeatMsg) {
 
@@ -101,7 +101,7 @@ public class ServerHeartbeatHandler extends ChannelInboundHandlerAdapter {
             VpaasServerConnectLogUtils.doConnectLog(DispatcherOpEnum.heartbeat, ctx.channel(), stopWatch.getTime());
 
             //
-            LcServiceTraceHandler.stopTrace();
+            LcServiceTraceHelper.stopTrace();
         }
     }
 }

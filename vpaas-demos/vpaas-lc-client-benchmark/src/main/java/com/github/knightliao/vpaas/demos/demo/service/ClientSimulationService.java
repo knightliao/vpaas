@@ -19,7 +19,7 @@ public interface ClientSimulationService {
 
     void login();
 
-    void login(long uid);
+    void logout();
 
     boolean reconnect();
 
@@ -35,5 +35,5 @@ public interface ClientSimulationService {
 
     boolean isMqttProtocolRealConnected();
 
-    boolean TcpConnected();
+    boolean isTcpConnected();
 }

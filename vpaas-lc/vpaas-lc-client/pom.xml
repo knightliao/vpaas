@@ -15,7 +15,6 @@
 
     <dependencies>
 
-
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-connect</artifactId>

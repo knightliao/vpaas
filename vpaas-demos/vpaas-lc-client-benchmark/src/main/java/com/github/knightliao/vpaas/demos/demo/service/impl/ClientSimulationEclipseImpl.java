@@ -127,7 +127,7 @@ public class ClientSimulationEclipseImpl extends ClientSimulationBaseService imp
     }
 
     @Override
-    public void login(long uid) {
+    public void logout() {
 
     }
 
@@ -167,7 +167,7 @@ public class ClientSimulationEclipseImpl extends ClientSimulationBaseService imp
     }
 
     @Override
-    public boolean TcpConnected() {
+    public boolean isTcpConnected() {
         return false;
     }
 }
