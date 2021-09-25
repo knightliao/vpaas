@@ -74,6 +74,7 @@ public class VpaasMqttMessageEventListener implements LcMessageEventListener, Lc
 
             //
             MyThreadContext.init();
+            // 在这个线程的执行过程中，全部统一进行控制
             serverLogHelper.setUpForLog(channel);
 
             if (msg instanceof MqttMessage) {

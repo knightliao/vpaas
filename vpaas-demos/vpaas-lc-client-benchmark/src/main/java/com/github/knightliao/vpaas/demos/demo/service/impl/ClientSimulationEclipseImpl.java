@@ -152,11 +152,6 @@ public class ClientSimulationEclipseImpl extends ClientSimulationBaseService imp
     }
 
     @Override
-    public void setConnectStatus(String scene, boolean connectOk, boolean isAuth) {
-
-    }
-
-    @Override
     public void setToken(String token) {
 
     }

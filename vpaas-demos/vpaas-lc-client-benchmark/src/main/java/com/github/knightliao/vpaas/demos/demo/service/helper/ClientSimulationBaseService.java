@@ -33,4 +33,8 @@ public class ClientSimulationBaseService {
 
         return String.format(USER_NAME_FORMAT, -1);
     }
+
+    public void setConnectStatus(String scene, boolean connectOk, boolean isAuth) {
+
+    }
 }

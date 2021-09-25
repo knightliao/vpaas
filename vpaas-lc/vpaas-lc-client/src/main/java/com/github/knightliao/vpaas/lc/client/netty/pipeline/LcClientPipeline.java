@@ -9,6 +9,9 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.handler.ServerHeartbe
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.json.JsonDecoder;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.json.JsonEncoder;
+import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqtt.MqttDecoder;
+import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqtt.MyMqttEncoder;
+import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqttwc.MqttWebSocketCodec;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.SocketType;
 
@@ -17,6 +20,9 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 
 /**
@@ -27,8 +33,8 @@ import io.netty.handler.timeout.IdleStateHandler;
 public class LcClientPipeline {
 
     public static ChannelHandler getChildChannelHandler(ILcService lcService,
-                                                           ILcEventDispatcher eventDispatcher,
-                                                           LcClientParam lcClientParam) {
+                                                        ILcEventDispatcher eventDispatcher,
+                                                        LcClientParam lcClientParam) {
 
         return new ChannelInitializer<SocketChannel>() {
 
@@ -61,12 +67,30 @@ public class LcClientPipeline {
 
                     pipeline.addLast("decoder", new JsonDecoder());
                     pipeline.addLast("encoder", new JsonEncoder());
+
+                } else if (socketType.equals(SocketType.MQTT)) {
+                    //
+                    pipeline.addLast("myMqttDecoder", new MqttDecoder());
+                    pipeline.addLast("myMqttEncoder", MyMqttEncoder.INSTANCE);
+
+                } else if (socketType.equals(SocketType.MQTT_WS)) {
+
+                    //
+                    pipeline.addLast("httpServerCodec", new HttpServerCodec());
+                    pipeline.addLast("httpObjectAggregator", new HttpObjectAggregator(65536));
+                    pipeline.addLast("mqttWebSocketCodec", new MqttWebSocketCodec());
+                    pipeline.addLast("mqttDecoder", new MqttDecoder());
+                    pipeline.addLast("myMqttEncoder", MyMqttEncoder.INSTANCE);
+
+                    WebSocketServerProtocolHandler webSocketServerProtocolHandler =
+                            new WebSocketServerProtocolHandler(lcClientParam.getWebSocketPath(),
+                                    lcClientParam.getMqttVersion());
+                    pipeline.addLast("webSocketHandler", webSocketServerProtocolHandler);
                 }
 
                 // 注册事件分发handler
                 ClientDispatchHandler clientDispatchHandler = new ClientDispatchHandler(eventDispatcher, lcService);
                 pipeline.addLast("dispatchHandler", clientDispatchHandler);
-
             }
         };
 

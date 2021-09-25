@@ -21,8 +21,11 @@ import io.netty.handler.codec.mqtt.MqttConnectMessage;
 import io.netty.handler.codec.mqtt.MqttConnectPayload;
 import io.netty.handler.codec.mqtt.MqttConnectVariableHeader;
 import io.netty.handler.codec.mqtt.MqttFixedHeader;
+import io.netty.handler.codec.mqtt.MqttMessage;
 import io.netty.handler.codec.mqtt.MqttMessageFactory;
+import io.netty.handler.codec.mqtt.MqttMessageIdVariableHeader;
 import io.netty.handler.codec.mqtt.MqttMessageType;
+import io.netty.handler.codec.mqtt.MqttPubAckMessage;
 import io.netty.handler.codec.mqtt.MqttQoS;
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,7 +61,7 @@ public class ClientSimulationServiceImpl extends ClientSimulationBaseService imp
         myLcClient = VpaasClientFactory.getMyLcClientImpl().newClient(clientOptions);
         myLcClient.addEventListener(new MessageEventListenerDemo(this, clientDemoContext));
 
-        return connect(serverListStr);
+        return connect();
     }
 
     @Override
@@ -93,29 +96,116 @@ public class ClientSimulationServiceImpl extends ClientSimulationBaseService imp
         sendConnectCmd();
     }
 
+    private boolean connect() {
+
+        boolean ret = myLcClient.connectWait(CONNECT_TIMEOUT_MS);
+        if (!ret) {
+            return false;
+        }
+
+        sendConnectCmd();
+
+        return true;
+    }
+
     @Override
     public boolean reconnect() {
-        return false;
+
+        // close first
+        myLcClient.close();
+
+        //
+        myLcClient.reconnect();
+
+        //
+        if (isTcpConnected()) {
+
+            sendConnectCmd();
+        }
+
+        return true;
     }
 
     @Override
     public void sendDisconnectCmd() {
 
+        DemoLogUtils.info(clientRunEnum, "user_disconnect {0} {1}", clientDemoContext.getClientId(),
+                clientDemoContext.getUid());
+
+        MqttFixedHeader mqttFixedHeader = new MqttFixedHeader(
+                MqttMessageType.DISCONNECT,
+                false,
+                MqttQoS.AT_MOST_ONCE,
+                false,
+                0);
+
+        MqttMessage mqttMessage = new MqttMessage(mqttFixedHeader);
+
+        ChannelFuture channelFuture = myLcClient.send(mqttMessage);
+        channelFuture.addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture channelFuture) throws Exception {
+
+                channelFuture.await();
+                if (channelFuture.isSuccess()) {
+                    DemoLogUtils.info(clientRunEnum, "disconnect {0} {1}", clientDemoContext.getClientId(),
+                            clientDemoContext.getUid());
+                } else {
+                    DemoLogUtils.info(clientRunEnum, "disconnect {0} {1}", clientDemoContext.getClientId(),
+                            clientDemoContext.getUid());
+                }
+            }
+        });
     }
 
     @Override
     public void doPubAck(int messageId) {
 
+        MqttPubAckMessage pubAckMessage = (MqttPubAckMessage) MqttMessageFactory.newMessage(
+                new MqttFixedHeader(MqttMessageType.PUBACK, false, MqttQoS.AT_MOST_ONCE, false, 0),
+                MqttMessageIdVariableHeader.from(messageId), null);
+
+        ChannelFuture channelFuture = myLcClient.send(pubAckMessage);
+        channelFuture.addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture channelFuture) throws Exception {
+
+                channelFuture.await();
+                if (channelFuture.isSuccess()) {
+                    DemoLogUtils.info(clientRunEnum, "doPubAckSuc {0} {1}", clientDemoContext.getClientId(),
+                            clientDemoContext.getUid());
+                } else {
+                    DemoLogUtils.info(clientRunEnum, "doPubAckFailed {0} {1}", clientDemoContext.getClientId(),
+                            clientDemoContext.getUid());
+                }
+            }
+        });
     }
 
     @Override
     public void ping() {
 
-    }
+        if (myLcClient == null) {
+            throw new RuntimeException("myLcClient is null");
+        }
 
-    @Override
-    public void setConnectStatus(String scene, boolean connectOk, boolean isAuth) {
+        MqttMessage pingMessage = MqttMessageFactory.newMessage(
+                new MqttFixedHeader(MqttMessageType.PINGREQ,
+                        true,
+                        MqttQoS.AT_MOST_ONCE,
+                        true,
+                        0), null, null);
 
+        ChannelFuture channelFuture = myLcClient.send(pingMessage);
+        channelFuture.addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture channelFuture) throws Exception {
+                channelFuture.await();
+                if (channelFuture.isSuccess()) {
+                    DemoLogUtils.info(clientRunEnum, "pingSend");
+                }
+            }
+        });
     }
 
     @Override
@@ -125,12 +215,17 @@ public class ClientSimulationServiceImpl extends ClientSimulationBaseService imp
 
     @Override
     public boolean isMqttProtocolRealConnected() {
-        return false;
+
+        return isTcpConnected();
     }
 
     @Override
     public boolean isTcpConnected() {
-        return false;
+
+        if (myLcClient.getChannel() == null) {
+            return false;
+        }
+        return myLcClient.getChannel() != null && myLcClient.getChannel().isActive();
     }
 
     private void sendConnectCmd() {
@@ -142,7 +237,7 @@ public class ClientSimulationServiceImpl extends ClientSimulationBaseService imp
         MqttConnectPayload mqttConnectPayload = new MqttConnectPayload(clientDemoContext.getClientId(), "", "",
                 curUserName, "");
         MqttConnectVariableHeader mqttConnectVariableHeader = new MqttConnectVariableHeader(SocketType.MQTT.getDesc(),
-                (byte) 4, true, true, false, 0, false, false, seconds);
+                (byte) 4, true, false, false, 0, false, false, seconds);
 
         MqttConnectMessage mqttConnectMessage = (MqttConnectMessage) MqttMessageFactory.newMessage(
                 new MqttFixedHeader(MqttMessageType.CONNECT, true, MqttQoS.AT_MOST_ONCE, true, 0),
@@ -167,8 +262,8 @@ public class ClientSimulationServiceImpl extends ClientSimulationBaseService imp
                 } else {
 
                     //
-                    DemoLogUtils.info(clientRunEnum, "Noconnected {0} {1}", clientDemoContext.getClientId(),
-                            clientDemoContext.getUid());
+                    DemoLogUtils.info(clientRunEnum, "NoConnected {0} {1} {2}", clientDemoContext.getClientId(),
+                            clientDemoContext.getUid(), future.toString());
                 }
             }
         });

@@ -21,12 +21,13 @@ public class VpaasClientDemo1 {
 
             String clientId = "GID_XXX@@CLientID_123";
             Long uid = 100899712L;
+            String ip = "127.0.0.1:6000";
 
             ClientDemoContext clientDemoContext =
                     ClientDemoContext.builder().clientId(clientId)
                             .uid(uid)
                             // 10秒一次心跳
-                            .keepAliveTimeoutSecond(30)
+                            .keepAliveTimeoutSecond(10)
                             .loginPerhaps(2)
                             .logoutPerhaps(2)
                             .disconnectPerhaps(0)
@@ -34,6 +35,7 @@ public class VpaasClientDemo1 {
 
             ClientSimulationAdvService clientSimulationAdvService =
                     new ClientSimulationAdvServiceImpl(clientDemoContext);
+            clientSimulationAdvService.newOne(ip);
 
             while (true) {
                 Thread.sleep(5000);

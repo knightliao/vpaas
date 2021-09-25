@@ -14,12 +14,14 @@ import com.github.knightliao.vpaas.lc.server.connect.support.enums.ServerTypeEnu
 import com.github.knightliao.vpaas.lc.server.connect.support.utils.LogNeedUtils;
 
 import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author knightliao
  * @email knightliao@gmail.com
  * @date 2021/8/6 16:00
  */
+@Slf4j
 public class VpaasServerConnectLogUtils {
 
     private static Logger LOGGER_CONNECT_OP_LOG = LoggerFactory.getLogger(VpaasServerConstants.LOGGER_CONNECT_OP_LOG);
@@ -29,7 +31,7 @@ public class VpaasServerConnectLogUtils {
         try {
 
             //
-            MyThreadContext.init();
+            MyThreadContext.ensureInited();
 
             if (channel != null) {
 
@@ -40,11 +42,13 @@ public class VpaasServerConnectLogUtils {
                             ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
                 } else {
 
-                    LogNeedUtils.setupForLog(channel);
-                    LoggerUtil.infoIfNeed(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
-                            getServerType(),
-                            dispatcherOpEnum.getDesc(),
-                            ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
+                    boolean isLog = LogNeedUtils.isDoPartOfLog(channel);
+                    if (isLog) {
+                        LoggerUtil.info(LOGGER_CONNECT_OP_LOG, "{0} {1} {2} {3}",
+                                getServerType(),
+                                dispatcherOpEnum.getDesc(),
+                                ChannelKeyUtils.getChannelClientSessionAttribute(channel), cost);
+                    }
                 }
 
                 // 统计
@@ -52,9 +56,6 @@ public class VpaasServerConnectLogUtils {
             }
 
         } finally {
-
-            MyThreadContext.clean();
-
         }
     }
 

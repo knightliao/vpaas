@@ -171,8 +171,8 @@ public class LcEventDispatcherImpl implements ILcEventDispatcher {
 
         } catch (Exception ex) {
 
-            dispatchExceptionEvent(channelHandlerContext, channel, ex);
             log.error(ex.toString(), ex);
+            dispatchExceptionEvent(channelHandlerContext, channel, ex);
 
         } finally {
 

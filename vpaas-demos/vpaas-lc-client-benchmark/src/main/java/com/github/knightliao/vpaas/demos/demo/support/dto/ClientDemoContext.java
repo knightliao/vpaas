@@ -20,7 +20,6 @@ public class ClientDemoContext {
 
     private ClientRunEnum clientRunEnum;
     private int keepAliveTimeoutSecond;
-    private int defaultKeepaliveTimeoutSecond;
 
     private int loginPerhaps;
     private int logoutPerhaps;

@@ -10,12 +10,14 @@ import com.github.knightliao.vpaas.lc.server.connect.support.utils.LogNeedUtils;
 
 import io.netty.channel.Channel;
 import io.netty.handler.codec.mqtt.MqttMessageType;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author knightliao
  * @email knightliao@gmail.com
  * @date 2021/8/13 11:42
  */
+@Slf4j
 public class SessionLogUtils {
 
     private static Logger LOGGER_MQTT_SESSION_OP_LOG =
@@ -40,8 +42,11 @@ public class SessionLogUtils {
 
     public static void doIdleTimeoutLog(Channel channel, int expireSeconds, String clientId) {
 
-        LogNeedUtils.setupForLog(channel);
-        LoggerUtil.infoIfNeed(LOGGER_MQTT_IDLE_TIMEOUT_LOG, "{0} {1}", expireSeconds, clientId);
+        // 如果是单独的判断是否要打日志，就不要用threadcontext来做上下文判断，直接判断就可以。
+        boolean isLog = LogNeedUtils.isDoPartOfLog(channel);
+        if (isLog) {
+            LoggerUtil.info(LOGGER_MQTT_IDLE_TIMEOUT_LOG, "{0} {1}", expireSeconds, clientId);
+        }
 
         MonitorHelper.fastCompassOneKey("IDLE_TIMEOUT_LOG", String.valueOf(expireSeconds), 1, 0, true);
     }

@@ -7,14 +7,17 @@ import com.github.knightliao.vpaas.lc.server.connect.netty.handler.LcCountHandle
 import com.github.knightliao.vpaas.lc.server.connect.netty.handler.ServerDispatchHandler;
 import com.github.knightliao.vpaas.lc.server.connect.netty.handler.ServerHeartbeatHandler;
 import com.github.knightliao.vpaas.lc.server.connect.netty.server.ILcServer;
+import com.github.knightliao.vpaas.lc.server.connect.netty.server.LcServerContext;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.ILcService;
 import com.github.knightliao.vpaas.lc.server.connect.netty.service.LcService;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.json.JsonDecoder;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.json.JsonEncoder;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqtt.MqttDecoder;
 import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqtt.MyMqttEncoder;
+import com.github.knightliao.vpaas.lc.server.connect.protocol.codec.mqttwc.MqttWebSocketCodec;
 import com.github.knightliao.vpaas.lc.server.connect.support.dto.param.LcServiceParam;
 import com.github.knightliao.vpaas.lc.server.connect.support.enums.SocketType;
+import com.github.knightliao.vpaas.lc.server.server.IMyLcServer;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
@@ -24,6 +27,9 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 
 /**
@@ -124,6 +130,18 @@ public class ServerPipeline {
         } else if (socketType.equals(SocketType.MQTT_WS)) {
 
             //
+            //
+            pipeline.addLast("httpServerCodec", new HttpServerCodec());
+            pipeline.addLast("httpObjectAggregator", new HttpObjectAggregator(65536));
+            pipeline.addLast("mqttWebSocketCodec", new MqttWebSocketCodec());
+            pipeline.addLast("mqttDecoder", new MqttDecoder());
+            pipeline.addLast("myMqttEncoder", MyMqttEncoder.INSTANCE);
+
+            IMyLcServer server = (IMyLcServer) LcServerContext.getContext().getServer();
+            WebSocketServerProtocolHandler webSocketServerProtocolHandler =
+                    new WebSocketServerProtocolHandler(server.getServerParam().getWebSocketPath(),
+                            server.getServerParam().getMqttVersion());
+            pipeline.addLast("webSocketHandler", webSocketServerProtocolHandler);
         }
     }
 

@@ -137,10 +137,6 @@ public class ClientPingServiceHelper {
                                 //
                                 LcServiceTraceHelper.startTraceAndSession(clientSimulationService.getChannel());
 
-                                // 恢复正常心跳
-                                clientDemoContext.setKeepAliveTimeoutSecond(
-                                        clientDemoContext.getDefaultKeepaliveTimeoutSecond());
-
                                 //
                                 runPing();
 
@@ -170,7 +166,7 @@ public class ClientPingServiceHelper {
                             log.error(ex.toString(), ex);
                             nextPingTimeMills =
                                     System.currentTimeMillis()
-                                            + (long) clientDemoContext.getDefaultKeepaliveTimeoutSecond() * 2 * 1000;
+                                            + (long) clientDemoContext.getKeepAliveTimeoutSecond() * 2 * 1000;
 
                         } finally {
 
