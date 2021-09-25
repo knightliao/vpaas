@@ -171,6 +171,9 @@ public class ClientPingServiceHelper {
                         } finally {
 
                             LcServiceTraceHelper.clearChannelSession();
+
+                            //
+                            canNextTest.set(true);
                         }
                     }
                 }

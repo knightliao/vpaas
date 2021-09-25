@@ -87,6 +87,9 @@ public class PingReq implements IProtocolProcessor {
         // 没有会话，断开连接吧
         VpaasServerConnectLogUtils.doConnectLog(DispatcherOpEnum.pingClose, channel, 0);
         ChannelKeyUtils.setChannelClientInactiveAttribute(channel, DispatcherOpEnum.pingClose.getValue());
+
+        //
+        channel.close();
     }
 
     private void doResponse(Channel channel) {
