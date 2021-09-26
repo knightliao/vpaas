@@ -24,23 +24,23 @@
             <groupId>com.github.knightliao.middle</groupId>
             <artifactId>pack-api</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-api</artifactId>
             <version>0.0.2-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-store</artifactId>
             <version>0.0.2-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>com.github.knightliao.vpaas</groupId>
             <artifactId>vpaas-lc-server-connect</artifactId>
             <version>0.0.2-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
 
     </dependencies>

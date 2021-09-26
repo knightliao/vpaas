@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.github.knightliao.middle.api.core.callback.IMyRequesCallback;
 import com.github.knightliao.middle.api.core.dto.MyBaseResponse;
 import com.github.knightliao.middle.api.core.template.MyFacadeTemplate;
-import com.github.knightliao.middle.lang.exceptions.BizException;
-import com.github.knightliao.middle.lang.security.ParamAssertUtil;
+import com.github.knightliao.middle.lang.exceptions.exceptions.biz.BizException;
+import com.github.knightliao.middle.lang.security.BizParamAssertUtil;
 import com.github.knightliao.vpaas.api.support.enums.VpaasLcOfflineEnum;
 import com.github.knightliao.vpaas.api.web.request.VpaasOfflineRequest;
 import com.github.knightliao.vpaas.api.web.response.VpaasOfflineResponse;
@@ -35,9 +35,9 @@ public class VpaasStatusOpFacadeImpl implements VpaasStatusOpFacade {
             @Override
             public void checkParams() throws BizException {
 
-                ParamAssertUtil.assertArgumentValid(!StringUtils.isEmpty(vpaasOfflineRequest.getClientId()),
+                BizParamAssertUtil.assertArgumentValid(!StringUtils.isEmpty(vpaasOfflineRequest.getClientId()),
                         "clientId");
-                ParamAssertUtil.assertArgumentValid(!StringUtils.isEmpty(vpaasOfflineRequest.getFrom()), "from");
+                BizParamAssertUtil.assertArgumentValid(!StringUtils.isEmpty(vpaasOfflineRequest.getFrom()), "from");
             }
 
             @Override
