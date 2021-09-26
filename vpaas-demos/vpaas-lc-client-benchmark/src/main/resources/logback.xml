@@ -182,7 +182,7 @@
 
     <logger name="com.ibatis" level="debug"/>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="stdout"/>
         <appender-ref ref="DEBUG"/>
         <appender-ref ref="INFO"/>
