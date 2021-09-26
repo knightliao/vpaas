@@ -5,7 +5,7 @@ import java.net.SocketTimeoutException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-import com.github.knightliao.middle.lang.exceptions.SocketRuntimeException;
+import com.github.knightliao.middle.lang.exceptions.exceptions.others.SocketRuntimeException;
 import com.github.knightliao.middle.log.LoggerUtil;
 import com.github.knightliao.vpaas.lc.client.netty.channel.LcWrappedClientChannel;
 import com.github.knightliao.vpaas.lc.client.netty.client.IBaseClient;
@@ -155,7 +155,7 @@ public class BaseClient extends LcService implements IBaseClient {
     public ChannelFuture send(Object msg) {
 
         if (channel == null) {
-            throw new SocketRuntimeException("channel have not connect.");
+            throw new SocketRuntimeException("channel have not connect.", null);
         }
         return ((LcWrappedClientChannel) channel).send(msg);
     }
@@ -164,7 +164,7 @@ public class BaseClient extends LcService implements IBaseClient {
     public ResponseMsg sendWithSync(RequestMsg message) {
 
         if (channel == null) {
-            throw new SocketRuntimeException("channel have not connect.");
+            throw new SocketRuntimeException("channel have not connect.", null);
         }
         return ((LcWrappedClientChannel) channel).sendSync(message, lcClientParam.getSyncInvokeTimeout());
     }
@@ -173,7 +173,7 @@ public class BaseClient extends LcService implements IBaseClient {
     public ResponseMsg sendWithSync(RequestMsg message, int timeout) {
 
         if (channel == null) {
-            throw new SocketRuntimeException("channel have not connect.");
+            throw new SocketRuntimeException("channel have not connect.", null);
         }
         return ((LcWrappedClientChannel) channel).sendSync(message, timeout);
     }
