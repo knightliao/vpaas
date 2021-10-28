@@ -109,6 +109,11 @@
             <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.knightliao.middle</groupId>
+            <artifactId>pack-idgen</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

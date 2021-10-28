@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.demos.demo.demo;
+package com.github.knightliao.vpaas.demos.demo.demo.single;
 
 import org.apache.commons.lang3.RandomUtils;
 

@@ -1,4 +1,4 @@
-package com.github.knightliao.vpaas.demos.demo.demo;
+package com.github.knightliao.vpaas.demos.demo.demo.single;
 
 import com.github.knightliao.vpaas.demos.demo.service.ClientSimulationAdvService;
 import com.github.knightliao.vpaas.demos.demo.service.impl.ClientSimulationAdvServiceImpl;
