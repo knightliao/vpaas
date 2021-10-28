@@ -17,7 +17,7 @@
 
         <dependency>
             <groupId>com.github.knightliao.middle</groupId>
-            <artifactId>middle-redis</artifactId>
+            <artifactId>pack-redis</artifactId>
         </dependency>
 
         <dependency>

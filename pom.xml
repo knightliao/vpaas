@@ -13,7 +13,7 @@
 
         <!-- 模块版本号 -->
         <vpaas.version>0.0.1-SNAPSHOT</vpaas.version>
-        <middle.version>0.1.15-SNAPSHOT</middle.version>
+        <middle.version>0.1.16-SNAPSHOT</middle.version>
         <star.starter.version>0.0.3-SNAPSHOT</star.starter.version>
 
         <!-- Spring項目配置 -->
@@ -117,7 +117,7 @@
 
             <dependency>
                 <groupId>com.github.knightliao.middle</groupId>
-                <artifactId>middle-redis</artifactId>
+                <artifactId>pack-redis</artifactId>
                 <version>${middle.version}</version>
             </dependency>
 
@@ -148,6 +148,12 @@
             <dependency>
                 <groupId>com.github.knightliao.middle</groupId>
                 <artifactId>pack-idem</artifactId>
+                <version>${middle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.knightliao.middle</groupId>
+                <artifactId>pack-msg</artifactId>
                 <version>${middle.version}</version>
             </dependency>
 
