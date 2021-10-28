@@ -1,5 +1,7 @@
 package com.github.knightliao.vpaas.demos.demo.demo;
 
+import org.apache.commons.lang3.RandomUtils;
+
 import com.github.knightliao.vpaas.demos.demo.service.ClientSimulationAdvService;
 import com.github.knightliao.vpaas.demos.demo.service.impl.ClientSimulationAdvServiceImpl;
 import com.github.knightliao.vpaas.demos.demo.support.dto.ClientDemoContext;
@@ -39,6 +41,11 @@ public class VpaasClientDemo1 {
 
             while (true) {
                 Thread.sleep(5000);
+
+                if (RandomUtils.nextInt() % 1000 == 1) {
+                    clientSimulationAdvService.disconnect();
+                    break;
+                }
             }
 
         } catch (Exception ex) {

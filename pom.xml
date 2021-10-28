@@ -49,6 +49,7 @@
         <module>vpaas-demos</module>
         <module>vpaas-osb</module>
         <module>vpaas-tui</module>
+        <module>vpaas-processor</module>
         <module>vpaas-monitor</module>
     </modules>
 

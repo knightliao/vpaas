@@ -1,0 +1,28 @@
+kafka:
+  vpaas:
+    consumer:
+      group: vpaas_group
+
+management:
+  server:
+    port:
+      9021
+    ssl:
+      enabled: false
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
+    mappings:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /manage
+      exposure:
+        include: "*"
+
+endpoints:
+  alimetrics:
+    enabled: true

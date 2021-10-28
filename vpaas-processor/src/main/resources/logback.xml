@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="60 seconds" debug="debug">
+
+    <property name="serverName" value="./log/vpaas-processdor"/>
+    <property name="pattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{channelId} %X{traceId} %X{clientId} %X{uid} [%thread] %-5level %logger{80} - %msg%n"/>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${serverName}/debug.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${serverName}/debug.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${pattern}</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${serverName}/info.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${serverName}/info.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${pattern}</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${serverName}/warn.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${serverName}/warn.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${pattern}</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${serverName}/error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${serverName}/error.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${pattern}</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <logger name="LOGGER_CONNECT_OP_LOG" additivity="false" level="INFO">
+        <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${serverName}/logger_connect_op_log.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${serverName}/logger_connect_op_log.log.%d{yyyy-MM-dd}
+                </FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${pattern}</pattern>
+            </layout>
+        </appender>
+    </logger>
+
+    <logger name="LOGGER_CONNECT_RET_LOG" additivity="false" level="INFO">
+        <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${serverName}/logger_connect_ret_log.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${serverName}/logger_connect_ret_log.log.%d{yyyy-MM-dd}
+                </FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${pattern}</pattern>
+            </layout>
+        </appender>
+    </logger>
+    
+    <logger name="LOGGER_MQTT_SESSION_OP_LOG" additivity="false" level="INFO">
+        <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${serverName}/logger_session_op_log.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${serverName}/logger_session_op_log.log.%d{yyyy-MM-dd}
+                </FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${pattern}</pattern>
+            </layout>
+        </appender>
+    </logger>
+
+    <logger name="LOGGER_MQTT_IDLE_TIMEOUT_LOG" additivity="false" level="INFO">
+        <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${serverName}/logger_idle_timeout_log.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${serverName}/logger_idle_timeout_log.log.%d{yyyy-MM-dd}
+                </FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${pattern}</pattern>
+            </layout>
+        </appender>
+    </logger>
+
+    <appender name="MY_METRICS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${serverName}/my_metrics.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${serverName}/my_metrics.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${pattern}</pattern>
+        </layout>
+    </appender>
+
+    <logger name="RedisMetric" additivity="false" level="INFO">
+        <appender-ref ref="MY_METRICS" />
+    </logger>
+
+    <logger name="MIDDLE_REDIS_LOG" additivity="false" level="INFO">
+        <appender-ref ref="MY_METRICS" />
+    </logger>
+
+    <logger name="MIDDLE_IDGEN_LOG" additivity="false" level="INFO">
+        <appender-ref ref="MY_METRICS" />
+    </logger>
+
+    <logger name="LOGGER_CONNECT_CLIENT_OP_LOG" additivity="false" level="INFO">
+        <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${serverName}/logger_connect_client_op_log.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${serverName}/logger_connect_client_op_log.log.%d{yyyy-MM-dd}
+                </FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${pattern}</pattern>
+            </layout>
+        </appender>
+    </logger>
+
+    <logger name="io.codis.jodis">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="redis.clients.jedis">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="org.apache.zookeeper">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.reflections.Reflections">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="com.ibatis" level="debug"/>
+
+    <root level="INFO">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="DEBUG"/>
+        <appender-ref ref="INFO"/>
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="WARN"/>
+    </root>
+
+</configuration>
+
